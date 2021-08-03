@@ -31,9 +31,6 @@ namespace Image_indexer
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
-            "",
-            ""}, -1);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectTheFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -110,7 +107,6 @@ namespace Image_indexer
             this.previousDocumentButton = new System.Windows.Forms.Button();
             this.nextDocumentButton = new System.Windows.Forms.Button();
             this.validateButton = new System.Windows.Forms.Button();
-            this.fileListView = new System.Windows.Forms.ListView();
             this.fileListLabel = new System.Windows.Forms.Label();
             this.versionLabel = new System.Windows.Forms.Label();
             this.signatureLabel = new System.Windows.Forms.Label();
@@ -122,6 +118,8 @@ namespace Image_indexer
             this.leftButton = new System.Windows.Forms.Button();
             this.downButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.fileListBox = new System.Windows.Forms.ListBox();
+            this.propertiesLockButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -205,13 +203,15 @@ namespace Image_indexer
             // rotateClockwiseToolStripMenuItem
             // 
             this.rotateClockwiseToolStripMenuItem.Name = "rotateClockwiseToolStripMenuItem";
-            this.rotateClockwiseToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.rotateClockwiseToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Right)));
+            this.rotateClockwiseToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
             this.rotateClockwiseToolStripMenuItem.Text = "Rotate clockwise";
             // 
             // rotateCounterwiseToolStripMenuItem
             // 
             this.rotateCounterwiseToolStripMenuItem.Name = "rotateCounterwiseToolStripMenuItem";
-            this.rotateCounterwiseToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.rotateCounterwiseToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Left)));
+            this.rotateCounterwiseToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
             this.rotateCounterwiseToolStripMenuItem.Text = "Rotate counterwise";
             // 
             // toolStripSeparator2
@@ -222,14 +222,20 @@ namespace Image_indexer
             // nextDocumentToolStripMenuItem
             // 
             this.nextDocumentToolStripMenuItem.Name = "nextDocumentToolStripMenuItem";
-            this.nextDocumentToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.nextDocumentToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.N)));
+            this.nextDocumentToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
             this.nextDocumentToolStripMenuItem.Text = "Next document";
+            this.nextDocumentToolStripMenuItem.Click += new System.EventHandler(this.nextDocumentToolStripMenuItem_Click);
             // 
             // previousDocumentToolStripMenuItem
             // 
             this.previousDocumentToolStripMenuItem.Name = "previousDocumentToolStripMenuItem";
-            this.previousDocumentToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.previousDocumentToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.B)));
+            this.previousDocumentToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
             this.previousDocumentToolStripMenuItem.Text = "Previous document";
+            this.previousDocumentToolStripMenuItem.Click += new System.EventHandler(this.previousDocumentToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -1056,21 +1062,10 @@ namespace Image_indexer
             this.validateButton.UseVisualStyleBackColor = true;
             this.validateButton.Click += new System.EventHandler(this.validateButton_Click);
             // 
-            // fileListView
-            // 
-            this.fileListView.HideSelection = false;
-            this.fileListView.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
-            this.fileListView.Location = new System.Drawing.Point(21, 493);
-            this.fileListView.Name = "fileListView";
-            this.fileListView.Size = new System.Drawing.Size(758, 353);
-            this.fileListView.TabIndex = 6;
-            this.fileListView.UseCompatibleStateImageBehavior = false;
-            // 
             // fileListLabel
             // 
             this.fileListLabel.AutoSize = true;
-            this.fileListLabel.Location = new System.Drawing.Point(18, 474);
+            this.fileListLabel.Location = new System.Drawing.Point(18, 486);
             this.fileListLabel.Name = "fileListLabel";
             this.fileListLabel.Size = new System.Drawing.Size(38, 13);
             this.fileListLabel.TabIndex = 7;
@@ -1098,7 +1093,7 @@ namespace Image_indexer
             // 
             this.applyButton.Location = new System.Drawing.Point(12, 38);
             this.applyButton.Name = "applyButton";
-            this.applyButton.Size = new System.Drawing.Size(83, 23);
+            this.applyButton.Size = new System.Drawing.Size(120, 23);
             this.applyButton.TabIndex = 10;
             this.applyButton.Text = "Apply changes";
             this.applyButton.UseVisualStyleBackColor = true;
@@ -1172,12 +1167,35 @@ namespace Image_indexer
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
             // 
+            // fileListBox
+            // 
+            this.fileListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fileListBox.FormattingEnabled = true;
+            this.fileListBox.ItemHeight = 15;
+            this.fileListBox.Location = new System.Drawing.Point(12, 502);
+            this.fileListBox.Name = "fileListBox";
+            this.fileListBox.Size = new System.Drawing.Size(761, 349);
+            this.fileListBox.TabIndex = 22;
+            this.fileListBox.UseTabStops = false;
+            // 
+            // propertiesLockButton
+            // 
+            this.propertiesLockButton.Location = new System.Drawing.Point(656, 38);
+            this.propertiesLockButton.Name = "propertiesLockButton";
+            this.propertiesLockButton.Size = new System.Drawing.Size(120, 23);
+            this.propertiesLockButton.TabIndex = 23;
+            this.propertiesLockButton.Text = "Lock static fields";
+            this.propertiesLockButton.UseVisualStyleBackColor = true;
+            this.propertiesLockButton.Click += new System.EventHandler(this.propertiesLockButton_Click);
+            // 
             // imageIndexerMainWindow
             // 
             this.AcceptButton = this.validateButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1424, 911);
+            this.Controls.Add(this.propertiesLockButton);
+            this.Controls.Add(this.fileListBox);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.downButton);
             this.Controls.Add(this.leftButton);
@@ -1189,7 +1207,6 @@ namespace Image_indexer
             this.Controls.Add(this.signatureLabel);
             this.Controls.Add(this.versionLabel);
             this.Controls.Add(this.fileListLabel);
-            this.Controls.Add(this.fileListView);
             this.Controls.Add(this.validateButton);
             this.Controls.Add(this.nextDocumentButton);
             this.Controls.Add(this.previousDocumentButton);
@@ -1265,7 +1282,6 @@ namespace Image_indexer
         private System.Windows.Forms.Button validateButton;
         private System.Windows.Forms.ToolStripMenuItem selectTheFolderToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ListView fileListView;
         private System.Windows.Forms.Label fileListLabel;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.Label versionLabel;
@@ -1303,6 +1319,8 @@ namespace Image_indexer
         private System.Windows.Forms.Button leftButton;
         private System.Windows.Forms.Button downButton;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ListBox fileListBox;
+        private System.Windows.Forms.Button propertiesLockButton;
     }
 }
 

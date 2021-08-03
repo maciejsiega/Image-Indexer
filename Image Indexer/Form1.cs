@@ -64,18 +64,21 @@ namespace Image_indexer
             {
                 try
                 {
+                    if(this.pictureBox1.Image != null)
+                        this.pictureBox1.Image.Dispose();
                     this.imgOriginal = Image.FromFile(validList[indexNumber]);
                     this.pictureBox1.Image = imgOriginal;
                     this.pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
                     // reduce flickering
                     this.DoubleBuffered = true;
                     fitTheImage();
+                    this.fileListBox.SelectedItem = validList[indexNumber];
                     return true;
                 }
                 catch (Exception e)
                 {
                     MessageBox.Show("Error 0x1001 - Error while opening file. File is potentially corrupted. \n\n" + e.ToString(),"Error!");
-                    this.pictureBox1.Image = null;
+                    this.pictureBox1.Image.Dispose();
                     return false;
                 }
             }
@@ -102,7 +105,7 @@ namespace Image_indexer
                     validList = new List<string>();
                     this.folder_location = fbd.SelectedPath;
 
-                    MessageBox.Show("Files found: " + this.fileList.Length.ToString(), "Message");
+                    
                     for (int i = 0; i < this.fileList.Length; i++)
                     {
                         Console.WriteLine(this.fileList[i]);
@@ -114,11 +117,12 @@ namespace Image_indexer
                             if (check_if_valid_extension(this.fileList[i]) == true)
                                 validList.Add(this.fileList[i]);
                         }
-                            
+                        MessageBox.Show("Found: " + validList.Count.ToString()+ " image files", "Opening the files");
                         this.currentIndex = 0;
                         if (loadImage(this.currentIndex) == true)
                         {
                             load_images_list();
+                            this.fileListBox.SelectedItem = validList[this.currentIndex];
                         }
                     }
                 }
@@ -129,7 +133,7 @@ namespace Image_indexer
         {
             for (int i = 0; i < validList.Count; i++)
             {
-                this.fileListView.Items.Add(validList[i],"\n");
+                this.fileListBox.Items.Add(validList[i]);
             }
 
         }
@@ -161,6 +165,16 @@ namespace Image_indexer
             this.currentIndex += 1;
             //this.pictureBox1.Image = null;
             loadImage(this.currentIndex);
+        }
+
+        private void nextDocumentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            load_next_document();
+        }
+
+        private void previousDocumentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            load_previous_document();
         }
 
 
@@ -261,6 +275,7 @@ namespace Image_indexer
         /// <param name="e"></param>
         private void applyButton_Click(object sender, EventArgs e)
         {
+            this.stickyBox1.Enabled = true;
             if (this.enableBox2.Checked == true)
             {
                 this.fieldnameField2.ReadOnly = false;
@@ -445,10 +460,52 @@ namespace Image_indexer
             }
 
         }
+
+        private void propertiesLockButton_Click(object sender, EventArgs e)
+        {
+            this.requiredBox1.Enabled = false;
+            this.stickyBox1.Enabled = false;
+            this.filenameBox1.Enabled = false;
+            this.fieldnameField1.ReadOnly = true;
+
+            this.requiredBox2.Enabled = false;
+            this.stickyBox2.Enabled = false;
+            this.filenameBox2.Enabled = false;
+            this.fieldnameField2.ReadOnly = true;
+
+            this.requiredBox3.Enabled = false;
+            this.stickyBox3.Enabled = false;
+            this.filenameBox3.Enabled = false;
+            this.fieldnameField3.ReadOnly = true;
+
+            this.requiredBox4.Enabled = false;
+            this.stickyBox4.Enabled = false;
+            this.filenameBox4.Enabled = false;
+            this.fieldnameField4.ReadOnly = true;
+
+            this.requiredBox5.Enabled = false;
+            this.stickyBox5.Enabled = false;
+            this.filenameBox5.Enabled = false;
+            this.fieldnameField5.ReadOnly = true;
+
+            this.requiredBox6.Enabled = false;
+            this.stickyBox6.Enabled = false;
+            this.filenameBox6.Enabled = false;
+            this.fieldnameField6.ReadOnly = true;
+
+            this.requiredBox7.Enabled = false;
+            this.stickyBox7.Enabled = false;
+            this.filenameBox7.Enabled = false;
+            this.fieldnameField7.ReadOnly = true;
+
+            this.requiredBox8.Enabled = false;
+            this.stickyBox8.Enabled = false;
+            this.filenameBox8.Enabled = false;
+            this.fieldnameField8.ReadOnly = true;
+        }
+
         #endregion
 
-
-
-
+        
     }
 }
