@@ -1,0 +1,10 @@
+C:\Users\Maciej\source\repos\Image-Indexer\Image Indexer\obj\Debug\Image Indexer.csproj.AssemblyReference.cache
+C:\Users\Maciej\source\repos\Image-Indexer\Image Indexer\obj\Debug\Image_indexer.Properties.Resources.resources
+C:\Users\Maciej\source\repos\Image-Indexer\Image Indexer\obj\Debug\Image Indexer.csproj.GenerateResource.cache
+C:\Users\Maciej\source\repos\Image-Indexer\Image Indexer\obj\Debug\Image Indexer.csproj.CoreCompileInputs.cache
+C:\Users\Maciej\source\repos\Image-Indexer\Image Indexer\obj\Debug\Image_indexer.imageIndexerMainWindow.resources
+C:\Users\Maciej\source\repos\Image-Indexer\Image Indexer\bin\Debug\Image Indexer.exe.config
+C:\Users\Maciej\source\repos\Image-Indexer\Image Indexer\bin\Debug\Image Indexer.exe
+C:\Users\Maciej\source\repos\Image-Indexer\Image Indexer\bin\Debug\Image Indexer.pdb
+C:\Users\Maciej\source\repos\Image-Indexer\Image Indexer\obj\Debug\Image Indexer.exe
+C:\Users\Maciej\source\repos\Image-Indexer\Image Indexer\obj\Debug\Image Indexer.pdb

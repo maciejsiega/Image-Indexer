@@ -1,0 +1,10 @@
+C:\Users\Maciej\source\repos\Tiff Indexer\bin\Debug\Tiff Indexer.exe.config
+C:\Users\Maciej\source\repos\Tiff Indexer\bin\Debug\Tiff Indexer.exe
+C:\Users\Maciej\source\repos\Tiff Indexer\bin\Debug\Tiff Indexer.pdb
+C:\Users\Maciej\source\repos\Tiff Indexer\obj\Debug\Tiff Indexer.csproj.AssemblyReference.cache
+C:\Users\Maciej\source\repos\Tiff Indexer\obj\Debug\Tiff_Indexer.Properties.Resources.resources
+C:\Users\Maciej\source\repos\Tiff Indexer\obj\Debug\Tiff Indexer.csproj.GenerateResource.cache
+C:\Users\Maciej\source\repos\Tiff Indexer\obj\Debug\Tiff Indexer.csproj.CoreCompileInputs.cache
+C:\Users\Maciej\source\repos\Tiff Indexer\obj\Debug\Tiff Indexer.exe
+C:\Users\Maciej\source\repos\Tiff Indexer\obj\Debug\Tiff Indexer.pdb
+C:\Users\Maciej\source\repos\Tiff Indexer\obj\Debug\Tiff_Indexer.tiffIndexerMainWindow.resources
