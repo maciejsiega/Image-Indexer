@@ -1081,9 +1081,8 @@ namespace Image_indexer
             this.versionLabel.AutoSize = true;
             this.versionLabel.Location = new System.Drawing.Point(18, 861);
             this.versionLabel.Name = "versionLabel";
-            this.versionLabel.Size = new System.Drawing.Size(123, 13);
+            this.versionLabel.Size = new System.Drawing.Size(0, 13);
             this.versionLabel.TabIndex = 8;
-            this.versionLabel.Text = "Version: 1.0.0.20210802";
             // 
             // signatureLabel
             // 

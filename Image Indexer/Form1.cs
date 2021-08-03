@@ -19,24 +19,52 @@ namespace Image_indexer
     {
         private Image imgOriginal { get; set; }
         private string folder_location { get; set; }
-
         private string[] fileList { get; set; }
         private int currentIndex { get; set; }
 
+        static List<string> validList;
+
+        private int indexFieldsCount = 1;
         public imageIndexerMainWindow()
         {
             InitializeComponent();
+            this.versionLabel.Text = "Version: " + typeof(imageIndexerMainWindow).Assembly.GetName().Version;
         }
 
-        private bool load_image(int indexNumber)
+        /// <summary>
+        /// This method checks if the file extension is either jpg jpeg tiff tif or png
+        /// </summary>
+        /// <param name="file"></param>
+        /// <returns></returns>
+        private bool check_if_valid_extension(string file)
         {
-            if (indexNumber < this.fileList.Length)
-                if (this.fileList[indexNumber].Contains(".jpg") == true ||
-                this.fileList[indexNumber].Contains(".jpeg") == true ||
-                this.fileList[indexNumber].Contains(".tiff") == true ||
-                this.fileList[indexNumber].Contains(".tif") == true)
+            if (file.Contains(".jpg") == true ||
+               file.Contains(".jpeg") == true ||
+               file.Contains(".tiff") == true ||
+               file.Contains(".tif") == true ||
+               file.Contains(".png")==true)
+                return true;
+            else
+                return false;
+        }
+
+        /// <summary>
+        /// This method loads the image on the screen and sets its zoom to fit on the screen
+        /// </summary>
+        /// <param name="indexNumber">position in the validList List</param>
+        /// <returns>true for success, false for fail - fail due to going over the range or file exception</returns>
+        private bool loadImage(int indexNumber)
+        {
+            if (indexNumber < 0)
+            {
+                this.currentIndex = 0;
+                return false;
+            }
+            if (indexNumber < validList.Count)
+            {
+                try
                 {
-                    this.imgOriginal = Image.FromFile(this.fileList[indexNumber]);
+                    this.imgOriginal = Image.FromFile(validList[indexNumber]);
                     this.pictureBox1.Image = imgOriginal;
                     this.pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
                     // reduce flickering
@@ -44,22 +72,21 @@ namespace Image_indexer
                     fitTheImage();
                     return true;
                 }
-                else
+                catch (Exception e)
                 {
-                    this.currentIndex += 1;
-                    load_image(currentIndex);
+                    MessageBox.Show("Error 0x1001 - Error while opening file. File is potentially corrupted. \n\n" + e.ToString(),"Error!");
+                    this.pictureBox1.Image = null;
                     return false;
                 }
+            }
             else
             {
-                MessageBox.Show("No valid files to open", "File opening error");
+                this.currentIndex = validList.Count - 1;
+                MessageBox.Show("No more valid files to open", "File opening");
                 return false;
             }
 
         }
-
-
-
 
 
         private void selectTheFolderToolStripMenuItem_Click(object sender, EventArgs e)
@@ -72,9 +99,7 @@ namespace Image_indexer
                 {
                     this.folder_location = fbd.SelectedPath;
                     this.fileList = Directory.GetFiles(fbd.SelectedPath);
-
-                    MessageBox.Show(this.fileList.Length.ToString());
-
+                    validList = new List<string>();
                     this.folder_location = fbd.SelectedPath;
 
                     MessageBox.Show("Files found: " + this.fileList.Length.ToString(), "Message");
@@ -84,12 +109,17 @@ namespace Image_indexer
                     }
                     if (this.fileList.Length > 0)
                     {
+                        for (int i=0; i< this.fileList.Length;i++)
+                        {
+                            if (check_if_valid_extension(this.fileList[i]) == true)
+                                validList.Add(this.fileList[i]);
+                        }
+                            
                         this.currentIndex = 0;
-                        if (load_image(this.currentIndex) == true)
+                        if (loadImage(this.currentIndex) == true)
                         {
                             load_images_list();
                         }
-
                     }
                 }
             }
@@ -97,9 +127,9 @@ namespace Image_indexer
 
         private void load_images_list()
         {
-            for (int i = 0; i < this.fileList.Length; i++)
+            for (int i = 0; i < validList.Count; i++)
             {
-                this.fileListView.Items.Add(this.fileList[i]);
+                this.fileListView.Items.Add(validList[i],"\n");
             }
 
         }
@@ -111,12 +141,26 @@ namespace Image_indexer
 
         private void nextDocumentButton_Click(object sender, EventArgs e)
         {
-
+            load_next_document();
         }
 
         private void previousDocumentButton_Click(object sender, EventArgs e)
         {
+            load_previous_document();
+        }
 
+        private void load_previous_document()
+        {
+            this.currentIndex -= 1;
+            //this.pictureBox1.Image = null;
+            loadImage(this.currentIndex);
+        }
+
+        private void load_next_document()
+        {
+            this.currentIndex += 1;
+            //this.pictureBox1.Image = null;
+            loadImage(this.currentIndex);
         }
 
 
@@ -137,28 +181,28 @@ namespace Image_indexer
         {
             if (this.pictureBox1.Image == null)
                 return;
-            this.pictureBox1.Location = new Point(this.pictureBox1.Location.X, this.pictureBox1.Location.Y + 25);
+            this.pictureBox1.Location = new Point(this.pictureBox1.Location.X, this.pictureBox1.Location.Y + 70);
         }
 
         private void rightButton_Click(object sender, EventArgs e)
         {
             if (this.pictureBox1.Image == null)
                 return;
-            this.pictureBox1.Location = new Point(this.pictureBox1.Location.X - 25, this.pictureBox1.Location.Y);
+            this.pictureBox1.Location = new Point(this.pictureBox1.Location.X - 70, this.pictureBox1.Location.Y);
 
         }
         private void leftButton_Click(object sender, EventArgs e)
         {
             if (this.pictureBox1.Image == null)
                 return;
-            this.pictureBox1.Location = new Point(this.pictureBox1.Location.X + 25, this.pictureBox1.Location.Y);
+            this.pictureBox1.Location = new Point(this.pictureBox1.Location.X + 70, this.pictureBox1.Location.Y);
         }
 
         private void downButton_Click(object sender, EventArgs e)
         {
             if (this.pictureBox1.Image == null)
                 return;
-            this.pictureBox1.Location = new Point(this.pictureBox1.Location.X, this.pictureBox1.Location.Y - 25);
+            this.pictureBox1.Location = new Point(this.pictureBox1.Location.X, this.pictureBox1.Location.Y - 70);
         }
 
         private void pictureBox1_MouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
@@ -224,6 +268,7 @@ namespace Image_indexer
                 this.stickyBox2.Enabled = true;
                 this.requiredBox2.Enabled = true;
                 this.filenameBox2.Enabled = true;
+                this.indexFieldsCount = 2;
             }
             else
             {
@@ -237,6 +282,7 @@ namespace Image_indexer
                 this.requiredBox2.Checked = false;
                 this.filenameBox2.Enabled = false;
                 this.filenameBox2.Checked = false;
+                this.indexFieldsCount = 1;
             }
             if (this.enableBox3.Checked == true &
                 this.enableBox2.Checked == true)
@@ -246,6 +292,7 @@ namespace Image_indexer
                 this.stickyBox3.Enabled = true;
                 this.requiredBox3.Enabled = true;
                 this.filenameBox3.Enabled = true;
+                this.indexFieldsCount = 3;
             }
             else
             {
@@ -259,6 +306,7 @@ namespace Image_indexer
                 this.requiredBox3.Checked = false;
                 this.filenameBox3.Enabled = false;
                 this.filenameBox3.Checked = false;
+                this.indexFieldsCount = 2;
             }
             if (this.enableBox4.Checked == true &
                 this.enableBox3.Checked == true &
@@ -269,6 +317,7 @@ namespace Image_indexer
                 this.stickyBox4.Enabled = true;
                 this.requiredBox4.Enabled = true;
                 this.filenameBox4.Enabled = true;
+                this.indexFieldsCount = 4;
             }
             else
             {
@@ -282,6 +331,7 @@ namespace Image_indexer
                 this.requiredBox4.Checked = false;
                 this.filenameBox4.Enabled = false;
                 this.filenameBox4.Checked = false;
+                this.indexFieldsCount = 3;
             }
             if (this.enableBox5.Checked == true &
                 this.enableBox4.Checked == true &
@@ -293,6 +343,7 @@ namespace Image_indexer
                 this.stickyBox5.Enabled = true;
                 this.requiredBox5.Enabled = true;
                 this.filenameBox5.Enabled = true;
+                this.indexFieldsCount = 5;
             }
             else
             {
@@ -306,6 +357,7 @@ namespace Image_indexer
                 this.requiredBox5.Checked = false;
                 this.filenameBox5.Enabled = false;
                 this.filenameBox5.Checked = false;
+                this.indexFieldsCount = 4;
             }
             if (this.enableBox6.Checked == true &
                 this.enableBox5.Checked == true &
@@ -318,6 +370,7 @@ namespace Image_indexer
                 this.stickyBox6.Enabled = true;
                 this.requiredBox6.Enabled = true;
                 this.filenameBox6.Enabled = true;
+                this.indexFieldsCount = 6;
             }
             else
             {
@@ -331,6 +384,7 @@ namespace Image_indexer
                 this.requiredBox6.Checked = false;
                 this.filenameBox6.Enabled = false;
                 this.filenameBox6.Checked = false;
+                this.indexFieldsCount = 5;
             }
             if (this.enableBox7.Checked == true &
                 this.enableBox6.Checked == true &
@@ -344,6 +398,7 @@ namespace Image_indexer
                 this.stickyBox7.Enabled = true;
                 this.requiredBox7.Enabled = true;
                 this.filenameBox7.Enabled = true;
+                this.indexFieldsCount = 7;
             }
             else
             {
@@ -357,6 +412,7 @@ namespace Image_indexer
                 this.requiredBox7.Checked = false;
                 this.filenameBox7.Enabled = false;
                 this.filenameBox7.Checked = false;
+                this.indexFieldsCount = 6;
             }
             if (this.enableBox8.Checked == true &
                 this.enableBox7.Checked == true &
@@ -371,6 +427,7 @@ namespace Image_indexer
                 this.requiredBox8.Enabled = true;
                 this.stickyBox8.Enabled = true;
                 this.filenameBox8.Enabled = true;
+                this.indexFieldsCount = 8;
             }
             else
             {
@@ -384,10 +441,10 @@ namespace Image_indexer
                 this.requiredBox8.Checked = false;
                 this.filenameBox8.Enabled = false;
                 this.filenameBox8.Checked = false;
+                this.indexFieldsCount = 7;
             }
 
         }
-
         #endregion
 
 
