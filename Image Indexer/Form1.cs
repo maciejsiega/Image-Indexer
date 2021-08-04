@@ -15,12 +15,28 @@ using System.IO;
 
 namespace Image_indexer
 {
+    public class indexedValues
+    {
+        public string[] indexedText = new string [8];
+        public string newFilename;
+
+        public void setEmptyValues()
+        {
+            for (int i = 0; i < 8; i++)
+                this.indexedText[i] = "";
+        }
+    }
+    /// <summary>
+    /// Main class
+    /// </summary>
     public partial class imageIndexerMainWindow : Form
     {
         private Image imgOriginal { get; set; }
         private string folder_location { get; set; }
         private string[] fileList { get; set; }
         private int currentIndex { get; set; }
+
+        private indexedValues[] indexedText;
 
         static List<string> validList;
 
@@ -29,6 +45,18 @@ namespace Image_indexer
         {
             InitializeComponent();
             this.versionLabel.Text = "Version: " + typeof(imageIndexerMainWindow).Assembly.GetName().Version;
+            lockIncompleteFunctions();
+        }
+
+        private void lockIncompleteFunctions()
+        {
+            this.rotateClockwiseToolStripMenuItem.Enabled = false;
+            this.rotateCounterwiseToolStripMenuItem.Enabled = false;
+            this.loadConfigFileToolStripMenuItem.Enabled = false;
+            this.helpToolStripMenuItem.Enabled = false;
+            this.aboutToolStripMenuItem.Enabled = false;
+            this.nextPageToolStripMenuItem.Enabled = false;
+            this.previousPageToolStripMenuItem.Enabled = false;
         }
 
         /// <summary>
@@ -73,6 +101,10 @@ namespace Image_indexer
                     this.DoubleBuffered = true;
                     fitTheImage();
                     this.fileListBox.SelectedItem = validList[indexNumber];
+                    this.indexedText = new indexedValues[validList.Count];
+                    for (int i = 0; i < validList.Count; i++)
+                        this.indexedText[i].setEmptyValues();
+                    loadMetadata(this.currentIndex);
                     return true;
                 }
                 catch (Exception e)
@@ -92,6 +124,25 @@ namespace Image_indexer
         }
 
 
+
+        private void loadMetadata(int currentIndex)
+        {
+            this.indexField1.Text = this.indexedText[currentIndex].indexedText[0];
+            this.indexField2.Text = this.indexedText[currentIndex].indexedText[1];
+            this.indexField3.Text = this.indexedText[currentIndex].indexedText[2];
+            this.indexField4.Text = this.indexedText[currentIndex].indexedText[3];
+            this.indexField5.Text = this.indexedText[currentIndex].indexedText[4];
+            this.indexField6.Text = this.indexedText[currentIndex].indexedText[5];
+            this.indexField7.Text = this.indexedText[currentIndex].indexedText[6];
+            this.indexField8.Text = this.indexedText[currentIndex].indexedText[7];
+        }
+
+        #region loadingFolder
+        /// <summary>
+        /// This method allows to select the folder with the images loads up images into the system
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void selectTheFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (var fbd = new FolderBrowserDialog())
@@ -138,9 +189,19 @@ namespace Image_indexer
 
         }
 
-        private void validateButton_Click(object sender, EventArgs e)
+        #endregion
+
+        #region Documents control methods
+        /// <summary>
+        /// This method allows to select the image from the list
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void fileListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            return;
+            this.currentIndex = this.fileListBox.SelectedIndex;
+            loadImage(currentIndex);
+            
         }
 
         private void nextDocumentButton_Click(object sender, EventArgs e)
@@ -149,6 +210,16 @@ namespace Image_indexer
         }
 
         private void previousDocumentButton_Click(object sender, EventArgs e)
+        {
+            load_previous_document();
+        }
+
+        private void nextDocumentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            load_next_document();
+        }
+
+        private void previousDocumentToolStripMenuItem_Click(object sender, EventArgs e)
         {
             load_previous_document();
         }
@@ -167,16 +238,94 @@ namespace Image_indexer
             loadImage(this.currentIndex);
         }
 
-        private void nextDocumentToolStripMenuItem_Click(object sender, EventArgs e)
+        private void validateButton_Click(object sender, EventArgs e)
         {
-            load_next_document();
-        }
+            //Field1
+            if(this.indexField1.TextLength>0)
+                this.indexedText[this.currentIndex].indexedText[0] = this.indexField1.Text;
+            else
+            {
+                MessageBox.Show("Index field 1 cannot be left empty as it is a required field", "Validation error");
+                return;
+            }
+            //Field2
+            if (this.requiredBox2.Checked==true & this.indexField2.TextLength==0)
+            {
+                MessageBox.Show("Index field 2 cannot be left empty as it is a required field", "Validation error");
+                return;
+            }
+            else
+                this.indexedText[this.currentIndex].indexedText[1] = this.indexField2.Text;
+            //Field3
+            if (this.requiredBox3.Checked == true & this.indexField3.TextLength == 0)
+            {
+                MessageBox.Show("Index field 3 cannot be left empty as it is a required field", "Validation error");
+                return;
+            }
+            else
+                this.indexedText[this.currentIndex].indexedText[2] = this.indexField3.Text;
+            //Field4
+            if (this.requiredBox4.Checked == true & this.indexField4.TextLength == 0)
+            {
+                MessageBox.Show("Index field 4 cannot be left empty as it is a required field", "Validation error");
+                return;
+            }
+            else
+                this.indexedText[this.currentIndex].indexedText[3] = this.indexField4.Text;
+            //Field5
+            if (this.requiredBox5.Checked == true & this.indexField5.TextLength == 0)
+            {
+                MessageBox.Show("Index field 5 cannot be left empty as it is a required field", "Validation error");
+                return;
+            }
+            else
+                this.indexedText[this.currentIndex].indexedText[4] = this.indexField5.Text;
+            //Field6
+            if (this.requiredBox6.Checked == true & this.indexField6.TextLength == 0)
+            {
+                MessageBox.Show("Index field 6 cannot be left empty as it is a required field", "Validation error");
+                return;
+            }
+            else
+                this.indexedText[this.currentIndex].indexedText[5] = this.indexField6.Text;
+            //Field7
+            if (this.requiredBox7.Checked == true & this.indexField7.TextLength == 0)
+            {
+                MessageBox.Show("Index field 7 cannot be left empty as it is a required field", "Validation error");
+                return;
+            }
+            else
+                this.indexedText[this.currentIndex].indexedText[6] = this.indexField7.Text;
+            //Field8
+            if (this.requiredBox7.Checked == true & this.indexField7.TextLength == 0)
+            {
+                MessageBox.Show("Index field 8 cannot be left empty as it is a required field", "Validation error");
+                return;
+            }
+            else
+                this.indexedText[this.currentIndex].indexedText[7] = this.indexField8.Text;
 
-        private void previousDocumentToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            load_previous_document();
-        }
+            //Creating a new filename
 
+            this.indexedText[this.currentIndex].newFilename = this.indexField1.Text;
+            if(this.filenameBox2.Checked == true)
+                this.indexedText[this.currentIndex].newFilename += ("-" + this.indexField2.Text);
+            if(this.filenameBox3.Checked == true)
+                this.indexedText[this.currentIndex].newFilename += ("-" + this.indexField3.Text);
+            if (this.filenameBox4.Checked == true)
+                this.indexedText[this.currentIndex].newFilename += ("-" + this.indexField4.Text);
+            if (this.filenameBox5.Checked == true)
+                this.indexedText[this.currentIndex].newFilename += ("-" + this.indexField5.Text);
+            if (this.filenameBox6.Checked == true)
+                this.indexedText[this.currentIndex].newFilename += ("-" + this.indexField6.Text);
+            if (this.filenameBox7.Checked == true)
+                this.indexedText[this.currentIndex].newFilename += ("-" + this.indexField7.Text);
+            if (this.filenameBox8.Checked == true)
+                this.indexedText[this.currentIndex].newFilename += ("-" + this.indexField8.Text);
+
+            return;
+        }
+        #endregion
 
         #region Image Control Buttons
         private void fitImageButton_Click(object sender, EventArgs e)
@@ -265,8 +414,6 @@ namespace Image_indexer
 
         #endregion
 
-
-
         #region Applying settings for validation / indexing
         /// <summary>
         /// This method refreshes the indexing fields
@@ -276,6 +423,7 @@ namespace Image_indexer
         private void applyButton_Click(object sender, EventArgs e)
         {
             this.stickyBox1.Enabled = true;
+            this.fieldnameField1.ReadOnly = false;
             if (this.enableBox2.Checked == true)
             {
                 this.fieldnameField2.ReadOnly = false;
@@ -504,8 +652,8 @@ namespace Image_indexer
             this.fieldnameField8.ReadOnly = true;
         }
 
+
         #endregion
 
-        
     }
 }

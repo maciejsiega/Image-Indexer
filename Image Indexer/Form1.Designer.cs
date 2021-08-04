@@ -204,27 +204,27 @@ namespace Image_indexer
             // 
             this.rotateClockwiseToolStripMenuItem.Name = "rotateClockwiseToolStripMenuItem";
             this.rotateClockwiseToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Right)));
-            this.rotateClockwiseToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
+            this.rotateClockwiseToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
             this.rotateClockwiseToolStripMenuItem.Text = "Rotate clockwise";
             // 
             // rotateCounterwiseToolStripMenuItem
             // 
             this.rotateCounterwiseToolStripMenuItem.Name = "rotateCounterwiseToolStripMenuItem";
             this.rotateCounterwiseToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Left)));
-            this.rotateCounterwiseToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
+            this.rotateCounterwiseToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
             this.rotateCounterwiseToolStripMenuItem.Text = "Rotate counterwise";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(174, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(247, 6);
             // 
             // nextDocumentToolStripMenuItem
             // 
             this.nextDocumentToolStripMenuItem.Name = "nextDocumentToolStripMenuItem";
             this.nextDocumentToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.N)));
-            this.nextDocumentToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
+            this.nextDocumentToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
             this.nextDocumentToolStripMenuItem.Text = "Next document";
             this.nextDocumentToolStripMenuItem.Click += new System.EventHandler(this.nextDocumentToolStripMenuItem_Click);
             // 
@@ -240,18 +240,18 @@ namespace Image_indexer
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(174, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(247, 6);
             // 
             // nextPageToolStripMenuItem
             // 
             this.nextPageToolStripMenuItem.Name = "nextPageToolStripMenuItem";
-            this.nextPageToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.nextPageToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
             this.nextPageToolStripMenuItem.Text = "Next page";
             // 
             // previousPageToolStripMenuItem
             // 
             this.previousPageToolStripMenuItem.Name = "previousPageToolStripMenuItem";
-            this.previousPageToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.previousPageToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
             this.previousPageToolStripMenuItem.Text = "Previous page";
             // 
             // pictureBox1
@@ -1177,6 +1177,7 @@ namespace Image_indexer
             this.fileListBox.Size = new System.Drawing.Size(761, 349);
             this.fileListBox.TabIndex = 22;
             this.fileListBox.UseTabStops = false;
+            this.fileListBox.SelectedIndexChanged += new System.EventHandler(this.fileListBox_SelectedIndexChanged);
             // 
             // propertiesLockButton
             // 
