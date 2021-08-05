@@ -7,4 +7,8 @@ C:\Users\Maciej\source\repos\Image-Indexer\Image Indexer\bin\Debug\Image Indexer
 C:\Users\Maciej\source\repos\Image-Indexer\Image Indexer\bin\Debug\Image Indexer.pdb
 C:\Users\Maciej\source\repos\Image-Indexer\Image Indexer\obj\Debug\Image Indexer.exe
 C:\Users\Maciej\source\repos\Image-Indexer\Image Indexer\obj\Debug\Image Indexer.pdb
-C:\Users\Maciej\source\repos\Image-Indexer\Image Indexer\obj\Debug\Image_indexer.indexedValues.resources
+C:\Users\Maciej\source\repos\Image-Indexer\Image Indexer\obj\Debug\Image_indexer.imageIndexerMainWindow.resources
+C:\Users\Maciej\source\repos\Image-Indexer\Image Indexer\bin\Debug\Image Indexer.exe.manifest
+C:\Users\Maciej\source\repos\Image-Indexer\Image Indexer\bin\Debug\Image Indexer.application
+C:\Users\Maciej\source\repos\Image-Indexer\Image Indexer\obj\Debug\Image Indexer.exe.manifest
+C:\Users\Maciej\source\repos\Image-Indexer\Image Indexer\obj\Debug\Image Indexer.application

@@ -31,6 +31,7 @@ namespace Image_indexer
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(imageIndexerMainWindow));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectTheFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -222,8 +223,7 @@ namespace Image_indexer
             // nextDocumentToolStripMenuItem
             // 
             this.nextDocumentToolStripMenuItem.Name = "nextDocumentToolStripMenuItem";
-            this.nextDocumentToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.N)));
+            this.nextDocumentToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
             this.nextDocumentToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
             this.nextDocumentToolStripMenuItem.Text = "Next document";
             this.nextDocumentToolStripMenuItem.Click += new System.EventHandler(this.nextDocumentToolStripMenuItem_Click);
@@ -258,6 +258,7 @@ namespace Image_indexer
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Image = global::Image_indexer.Properties.Resources.imageIndexer;
             this.pictureBox1.Location = new System.Drawing.Point(12, 19);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(600, 800);
@@ -358,6 +359,7 @@ namespace Image_indexer
             this.filenameBox7.Name = "filenameBox7";
             this.filenameBox7.Size = new System.Drawing.Size(72, 28);
             this.filenameBox7.TabIndex = 69;
+            this.filenameBox7.TabStop = false;
             this.filenameBox7.UseVisualStyleBackColor = true;
             // 
             // filenameBox6
@@ -370,6 +372,7 @@ namespace Image_indexer
             this.filenameBox6.Name = "filenameBox6";
             this.filenameBox6.Size = new System.Drawing.Size(72, 26);
             this.filenameBox6.TabIndex = 68;
+            this.filenameBox6.TabStop = false;
             this.filenameBox6.UseVisualStyleBackColor = true;
             // 
             // filenameBox5
@@ -382,6 +385,7 @@ namespace Image_indexer
             this.filenameBox5.Name = "filenameBox5";
             this.filenameBox5.Size = new System.Drawing.Size(72, 28);
             this.filenameBox5.TabIndex = 67;
+            this.filenameBox5.TabStop = false;
             this.filenameBox5.UseVisualStyleBackColor = true;
             // 
             // indexField1
@@ -407,6 +411,7 @@ namespace Image_indexer
             this.stickyBox8.Name = "stickyBox8";
             this.stickyBox8.Size = new System.Drawing.Size(71, 30);
             this.stickyBox8.TabIndex = 43;
+            this.stickyBox8.TabStop = false;
             this.stickyBox8.UseVisualStyleBackColor = true;
             // 
             // requiredBox7
@@ -419,6 +424,7 @@ namespace Image_indexer
             this.requiredBox7.Name = "requiredBox7";
             this.requiredBox7.Size = new System.Drawing.Size(71, 28);
             this.requiredBox7.TabIndex = 39;
+            this.requiredBox7.TabStop = false;
             this.requiredBox7.UseVisualStyleBackColor = true;
             // 
             // stickyBox7
@@ -431,6 +437,7 @@ namespace Image_indexer
             this.stickyBox7.Name = "stickyBox7";
             this.stickyBox7.Size = new System.Drawing.Size(71, 28);
             this.stickyBox7.TabIndex = 38;
+            this.stickyBox7.TabStop = false;
             this.stickyBox7.UseVisualStyleBackColor = true;
             // 
             // enableBox7
@@ -442,6 +449,7 @@ namespace Image_indexer
             this.enableBox7.Name = "enableBox7";
             this.enableBox7.Size = new System.Drawing.Size(55, 28);
             this.enableBox7.TabIndex = 35;
+            this.enableBox7.TabStop = false;
             this.enableBox7.UseVisualStyleBackColor = true;
             // 
             // requiredBox6
@@ -454,6 +462,7 @@ namespace Image_indexer
             this.requiredBox6.Name = "requiredBox6";
             this.requiredBox6.Size = new System.Drawing.Size(71, 26);
             this.requiredBox6.TabIndex = 34;
+            this.requiredBox6.TabStop = false;
             this.requiredBox6.UseVisualStyleBackColor = true;
             // 
             // stickyBox6
@@ -466,6 +475,7 @@ namespace Image_indexer
             this.stickyBox6.Name = "stickyBox6";
             this.stickyBox6.Size = new System.Drawing.Size(71, 26);
             this.stickyBox6.TabIndex = 33;
+            this.stickyBox6.TabStop = false;
             this.stickyBox6.UseVisualStyleBackColor = true;
             // 
             // enableBox6
@@ -477,6 +487,7 @@ namespace Image_indexer
             this.enableBox6.Name = "enableBox6";
             this.enableBox6.Size = new System.Drawing.Size(55, 26);
             this.enableBox6.TabIndex = 30;
+            this.enableBox6.TabStop = false;
             this.enableBox6.UseVisualStyleBackColor = true;
             // 
             // requiredBox5
@@ -489,6 +500,7 @@ namespace Image_indexer
             this.requiredBox5.Name = "requiredBox5";
             this.requiredBox5.Size = new System.Drawing.Size(71, 28);
             this.requiredBox5.TabIndex = 29;
+            this.requiredBox5.TabStop = false;
             this.requiredBox5.UseVisualStyleBackColor = true;
             // 
             // stickyBox5
@@ -501,6 +513,7 @@ namespace Image_indexer
             this.stickyBox5.Name = "stickyBox5";
             this.stickyBox5.Size = new System.Drawing.Size(71, 28);
             this.stickyBox5.TabIndex = 28;
+            this.stickyBox5.TabStop = false;
             this.stickyBox5.UseVisualStyleBackColor = true;
             // 
             // enableBox5
@@ -512,6 +525,7 @@ namespace Image_indexer
             this.enableBox5.Name = "enableBox5";
             this.enableBox5.Size = new System.Drawing.Size(55, 28);
             this.enableBox5.TabIndex = 25;
+            this.enableBox5.TabStop = false;
             this.enableBox5.UseVisualStyleBackColor = true;
             // 
             // requiredBox4
@@ -524,6 +538,7 @@ namespace Image_indexer
             this.requiredBox4.Name = "requiredBox4";
             this.requiredBox4.Size = new System.Drawing.Size(71, 28);
             this.requiredBox4.TabIndex = 24;
+            this.requiredBox4.TabStop = false;
             this.requiredBox4.UseVisualStyleBackColor = true;
             // 
             // stickyBox4
@@ -536,6 +551,7 @@ namespace Image_indexer
             this.stickyBox4.Name = "stickyBox4";
             this.stickyBox4.Size = new System.Drawing.Size(71, 28);
             this.stickyBox4.TabIndex = 23;
+            this.stickyBox4.TabStop = false;
             this.stickyBox4.UseVisualStyleBackColor = true;
             // 
             // enableBox4
@@ -547,6 +563,7 @@ namespace Image_indexer
             this.enableBox4.Name = "enableBox4";
             this.enableBox4.Size = new System.Drawing.Size(55, 28);
             this.enableBox4.TabIndex = 20;
+            this.enableBox4.TabStop = false;
             this.enableBox4.UseVisualStyleBackColor = true;
             // 
             // requiredBox3
@@ -559,6 +576,7 @@ namespace Image_indexer
             this.requiredBox3.Name = "requiredBox3";
             this.requiredBox3.Size = new System.Drawing.Size(71, 28);
             this.requiredBox3.TabIndex = 19;
+            this.requiredBox3.TabStop = false;
             this.requiredBox3.UseVisualStyleBackColor = true;
             // 
             // stickyBox3
@@ -571,6 +589,7 @@ namespace Image_indexer
             this.stickyBox3.Name = "stickyBox3";
             this.stickyBox3.Size = new System.Drawing.Size(71, 28);
             this.stickyBox3.TabIndex = 18;
+            this.stickyBox3.TabStop = false;
             this.stickyBox3.UseVisualStyleBackColor = true;
             // 
             // enableBox3
@@ -582,6 +601,7 @@ namespace Image_indexer
             this.enableBox3.Name = "enableBox3";
             this.enableBox3.Size = new System.Drawing.Size(55, 28);
             this.enableBox3.TabIndex = 15;
+            this.enableBox3.TabStop = false;
             this.enableBox3.UseVisualStyleBackColor = true;
             // 
             // requiredBox2
@@ -594,6 +614,7 @@ namespace Image_indexer
             this.requiredBox2.Name = "requiredBox2";
             this.requiredBox2.Size = new System.Drawing.Size(71, 28);
             this.requiredBox2.TabIndex = 14;
+            this.requiredBox2.TabStop = false;
             this.requiredBox2.UseVisualStyleBackColor = true;
             // 
             // stickyBox2
@@ -618,6 +639,7 @@ namespace Image_indexer
             this.enableBox2.Name = "enableBox2";
             this.enableBox2.Size = new System.Drawing.Size(55, 28);
             this.enableBox2.TabIndex = 10;
+            this.enableBox2.TabStop = false;
             this.enableBox2.UseVisualStyleBackColor = true;
             // 
             // requiredBox1
@@ -714,6 +736,7 @@ namespace Image_indexer
             this.enableBox1.Name = "enableBox1";
             this.enableBox1.Size = new System.Drawing.Size(55, 28);
             this.enableBox1.TabIndex = 5;
+            this.enableBox1.TabStop = false;
             this.enableBox1.UseVisualStyleBackColor = true;
             // 
             // filenameBox8
@@ -726,6 +749,7 @@ namespace Image_indexer
             this.filenameBox8.Name = "filenameBox8";
             this.filenameBox8.Size = new System.Drawing.Size(72, 30);
             this.filenameBox8.TabIndex = 44;
+            this.filenameBox8.TabStop = false;
             this.filenameBox8.UseVisualStyleBackColor = true;
             // 
             // fieldnameField1
@@ -768,7 +792,7 @@ namespace Image_indexer
             this.indexField2.Name = "indexField2";
             this.indexField2.ReadOnly = true;
             this.indexField2.Size = new System.Drawing.Size(268, 20);
-            this.indexField2.TabIndex = 47;
+            this.indexField2.TabIndex = 2;
             this.indexField2.WordWrap = false;
             // 
             // indexField3
@@ -782,7 +806,7 @@ namespace Image_indexer
             this.indexField3.Name = "indexField3";
             this.indexField3.ReadOnly = true;
             this.indexField3.Size = new System.Drawing.Size(268, 20);
-            this.indexField3.TabIndex = 48;
+            this.indexField3.TabIndex = 3;
             this.indexField3.WordWrap = false;
             // 
             // indexField4
@@ -796,7 +820,7 @@ namespace Image_indexer
             this.indexField4.Name = "indexField4";
             this.indexField4.ReadOnly = true;
             this.indexField4.Size = new System.Drawing.Size(268, 20);
-            this.indexField4.TabIndex = 49;
+            this.indexField4.TabIndex = 4;
             this.indexField4.WordWrap = false;
             // 
             // indexField5
@@ -810,7 +834,7 @@ namespace Image_indexer
             this.indexField5.Name = "indexField5";
             this.indexField5.ReadOnly = true;
             this.indexField5.Size = new System.Drawing.Size(268, 20);
-            this.indexField5.TabIndex = 50;
+            this.indexField5.TabIndex = 5;
             this.indexField5.WordWrap = false;
             // 
             // indexField6
@@ -824,7 +848,7 @@ namespace Image_indexer
             this.indexField6.Name = "indexField6";
             this.indexField6.ReadOnly = true;
             this.indexField6.Size = new System.Drawing.Size(268, 20);
-            this.indexField6.TabIndex = 51;
+            this.indexField6.TabIndex = 6;
             this.indexField6.WordWrap = false;
             // 
             // indexField7
@@ -838,7 +862,7 @@ namespace Image_indexer
             this.indexField7.Name = "indexField7";
             this.indexField7.ReadOnly = true;
             this.indexField7.Size = new System.Drawing.Size(268, 20);
-            this.indexField7.TabIndex = 52;
+            this.indexField7.TabIndex = 7;
             this.indexField7.WordWrap = false;
             // 
             // fieldnameField3
@@ -939,6 +963,7 @@ namespace Image_indexer
             this.filenameBox1.Name = "filenameBox1";
             this.filenameBox1.Size = new System.Drawing.Size(72, 28);
             this.filenameBox1.TabIndex = 63;
+            this.filenameBox1.TabStop = false;
             this.filenameBox1.UseVisualStyleBackColor = true;
             // 
             // filenameBox2
@@ -951,6 +976,7 @@ namespace Image_indexer
             this.filenameBox2.Name = "filenameBox2";
             this.filenameBox2.Size = new System.Drawing.Size(72, 28);
             this.filenameBox2.TabIndex = 64;
+            this.filenameBox2.TabStop = false;
             this.filenameBox2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.filenameBox2.UseVisualStyleBackColor = true;
             // 
@@ -964,6 +990,7 @@ namespace Image_indexer
             this.filenameBox3.Name = "filenameBox3";
             this.filenameBox3.Size = new System.Drawing.Size(72, 28);
             this.filenameBox3.TabIndex = 65;
+            this.filenameBox3.TabStop = false;
             this.filenameBox3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.filenameBox3.UseVisualStyleBackColor = true;
             // 
@@ -977,6 +1004,7 @@ namespace Image_indexer
             this.filenameBox4.Name = "filenameBox4";
             this.filenameBox4.Size = new System.Drawing.Size(72, 28);
             this.filenameBox4.TabIndex = 66;
+            this.filenameBox4.TabStop = false;
             this.filenameBox4.UseVisualStyleBackColor = true;
             // 
             // requiredBox8
@@ -989,6 +1017,7 @@ namespace Image_indexer
             this.requiredBox8.Name = "requiredBox8";
             this.requiredBox8.Size = new System.Drawing.Size(71, 30);
             this.requiredBox8.TabIndex = 61;
+            this.requiredBox8.TabStop = false;
             this.requiredBox8.UseVisualStyleBackColor = true;
             // 
             // indexField8
@@ -1002,7 +1031,7 @@ namespace Image_indexer
             this.indexField8.Name = "indexField8";
             this.indexField8.ReadOnly = true;
             this.indexField8.Size = new System.Drawing.Size(268, 20);
-            this.indexField8.TabIndex = 54;
+            this.indexField8.TabIndex = 8;
             this.indexField8.WordWrap = false;
             // 
             // fieldnameField8
@@ -1029,6 +1058,7 @@ namespace Image_indexer
             this.enableBox8.Name = "enableBox8";
             this.enableBox8.Size = new System.Drawing.Size(55, 30);
             this.enableBox8.TabIndex = 70;
+            this.enableBox8.TabStop = false;
             this.enableBox8.UseVisualStyleBackColor = true;
             // 
             // previousDocumentButton
@@ -1037,6 +1067,7 @@ namespace Image_indexer
             this.previousDocumentButton.Name = "previousDocumentButton";
             this.previousDocumentButton.Size = new System.Drawing.Size(120, 42);
             this.previousDocumentButton.TabIndex = 3;
+            this.previousDocumentButton.TabStop = false;
             this.previousDocumentButton.Text = "Previous document";
             this.previousDocumentButton.UseVisualStyleBackColor = true;
             this.previousDocumentButton.Click += new System.EventHandler(this.previousDocumentButton_Click);
@@ -1047,6 +1078,7 @@ namespace Image_indexer
             this.nextDocumentButton.Name = "nextDocumentButton";
             this.nextDocumentButton.Size = new System.Drawing.Size(120, 42);
             this.nextDocumentButton.TabIndex = 4;
+            this.nextDocumentButton.TabStop = false;
             this.nextDocumentButton.Text = "Next document";
             this.nextDocumentButton.UseVisualStyleBackColor = true;
             this.nextDocumentButton.Click += new System.EventHandler(this.nextDocumentButton_Click);
@@ -1058,6 +1090,7 @@ namespace Image_indexer
             this.validateButton.Name = "validateButton";
             this.validateButton.Size = new System.Drawing.Size(171, 42);
             this.validateButton.TabIndex = 5;
+            this.validateButton.TabStop = false;
             this.validateButton.Text = "Validate";
             this.validateButton.UseVisualStyleBackColor = true;
             this.validateButton.Click += new System.EventHandler(this.validateButton_Click);
@@ -1095,6 +1128,7 @@ namespace Image_indexer
             this.applyButton.Name = "applyButton";
             this.applyButton.Size = new System.Drawing.Size(120, 23);
             this.applyButton.TabIndex = 10;
+            this.applyButton.TabStop = false;
             this.applyButton.Text = "Apply changes";
             this.applyButton.UseVisualStyleBackColor = true;
             this.applyButton.Click += new System.EventHandler(this.applyButton_Click);
@@ -1105,6 +1139,7 @@ namespace Image_indexer
             this.fitImageButton.Name = "fitImageButton";
             this.fitImageButton.Size = new System.Drawing.Size(149, 23);
             this.fitImageButton.TabIndex = 14;
+            this.fitImageButton.TabStop = false;
             this.fitImageButton.Text = "Fit whole image";
             this.fitImageButton.UseVisualStyleBackColor = true;
             this.fitImageButton.Click += new System.EventHandler(this.fitImageButton_Click);
@@ -1124,6 +1159,7 @@ namespace Image_indexer
             this.upButton.Name = "upButton";
             this.upButton.Size = new System.Drawing.Size(75, 23);
             this.upButton.TabIndex = 17;
+            this.upButton.TabStop = false;
             this.upButton.Text = "UP";
             this.upButton.UseVisualStyleBackColor = true;
             this.upButton.Click += new System.EventHandler(this.upButton_Click);
@@ -1134,6 +1170,7 @@ namespace Image_indexer
             this.rightButton.Name = "rightButton";
             this.rightButton.Size = new System.Drawing.Size(75, 23);
             this.rightButton.TabIndex = 18;
+            this.rightButton.TabStop = false;
             this.rightButton.Text = "RIGHT";
             this.rightButton.UseVisualStyleBackColor = true;
             this.rightButton.Click += new System.EventHandler(this.rightButton_Click);
@@ -1144,6 +1181,7 @@ namespace Image_indexer
             this.leftButton.Name = "leftButton";
             this.leftButton.Size = new System.Drawing.Size(75, 23);
             this.leftButton.TabIndex = 19;
+            this.leftButton.TabStop = false;
             this.leftButton.Text = "LEFT";
             this.leftButton.UseVisualStyleBackColor = true;
             this.leftButton.Click += new System.EventHandler(this.leftButton_Click);
@@ -1154,6 +1192,7 @@ namespace Image_indexer
             this.downButton.Name = "downButton";
             this.downButton.Size = new System.Drawing.Size(75, 23);
             this.downButton.TabIndex = 20;
+            this.downButton.TabStop = false;
             this.downButton.Text = "DOWN";
             this.downButton.UseVisualStyleBackColor = true;
             this.downButton.Click += new System.EventHandler(this.downButton_Click);
@@ -1176,6 +1215,7 @@ namespace Image_indexer
             this.fileListBox.Name = "fileListBox";
             this.fileListBox.Size = new System.Drawing.Size(761, 349);
             this.fileListBox.TabIndex = 22;
+            this.fileListBox.TabStop = false;
             this.fileListBox.UseTabStops = false;
             this.fileListBox.SelectedIndexChanged += new System.EventHandler(this.fileListBox_SelectedIndexChanged);
             // 
@@ -1185,6 +1225,7 @@ namespace Image_indexer
             this.propertiesLockButton.Name = "propertiesLockButton";
             this.propertiesLockButton.Size = new System.Drawing.Size(120, 23);
             this.propertiesLockButton.TabIndex = 23;
+            this.propertiesLockButton.TabStop = false;
             this.propertiesLockButton.Text = "Lock static fields";
             this.propertiesLockButton.UseVisualStyleBackColor = true;
             this.propertiesLockButton.Click += new System.EventHandler(this.propertiesLockButton_Click);
@@ -1213,13 +1254,14 @@ namespace Image_indexer
             this.Controls.Add(this.previousDocumentButton);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1440, 950);
             this.MinimumSize = new System.Drawing.Size(1440, 950);
             this.Name = "imageIndexerMainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Tiff Indexer";
+            this.Text = "Image Indexer";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

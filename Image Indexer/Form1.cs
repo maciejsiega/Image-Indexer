@@ -12,20 +12,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.IO;
+//using System.Deployment.Application;
 
 namespace Image_indexer
 {
-    public class indexedValues
-    {
-        public string[] indexedText = new string [8];
-        public string newFilename;
-
-        public void setEmptyValues()
-        {
-            for (int i = 0; i < 8; i++)
-                this.indexedText[i] = "";
-        }
-    }
+    
     /// <summary>
     /// Main class
     /// </summary>
@@ -36,15 +27,21 @@ namespace Image_indexer
         private string[] fileList { get; set; }
         private int currentIndex { get; set; }
 
-        private indexedValues[] indexedText;
+        private List<string[]> indexedValuesList = new List<string []>();
+        private List<string> newFileNames = new List<string>();
 
-        static List<string> validList;
+
+        private List<string> validList = new List<string>();
 
         private int indexFieldsCount = 1;
+
         public imageIndexerMainWindow()
         {
             InitializeComponent();
-            this.versionLabel.Text = "Version: " + typeof(imageIndexerMainWindow).Assembly.GetName().Version;
+            if (System.Diagnostics.Debugger.IsAttached == true)
+                this.versionLabel.Text = "Version: debugger " + typeof(imageIndexerMainWindow).Assembly.GetName().Version;
+            else
+                this.versionLabel.Text = "Version: " + System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString();
             lockIncompleteFunctions();
         }
 
@@ -100,10 +97,8 @@ namespace Image_indexer
                     // reduce flickering
                     this.DoubleBuffered = true;
                     fitTheImage();
-                    this.fileListBox.SelectedItem = validList[indexNumber];
-                    this.indexedText = new indexedValues[validList.Count];
-                    for (int i = 0; i < validList.Count; i++)
-                        this.indexedText[i].setEmptyValues();
+                    this.fileListBox.SelectedItem= validList[indexNumber];
+
                     loadMetadata(this.currentIndex);
                     return true;
                 }
@@ -111,6 +106,7 @@ namespace Image_indexer
                 {
                     MessageBox.Show("Error 0x1001 - Error while opening file. File is potentially corrupted. \n\n" + e.ToString(),"Error!");
                     this.pictureBox1.Image.Dispose();
+                    this.pictureBox1.Image = Properties.Resources.imageIndexer;
                     return false;
                 }
             }
@@ -127,14 +123,22 @@ namespace Image_indexer
 
         private void loadMetadata(int currentIndex)
         {
-            this.indexField1.Text = this.indexedText[currentIndex].indexedText[0];
-            this.indexField2.Text = this.indexedText[currentIndex].indexedText[1];
-            this.indexField3.Text = this.indexedText[currentIndex].indexedText[2];
-            this.indexField4.Text = this.indexedText[currentIndex].indexedText[3];
-            this.indexField5.Text = this.indexedText[currentIndex].indexedText[4];
-            this.indexField6.Text = this.indexedText[currentIndex].indexedText[5];
-            this.indexField7.Text = this.indexedText[currentIndex].indexedText[6];
-            this.indexField8.Text = this.indexedText[currentIndex].indexedText[7];
+            if(this.indexedValuesList[currentIndex][0]!=null)
+                this.indexField1.Text = this.indexedValuesList[currentIndex][0];
+            if (this.indexedValuesList[currentIndex][1] != null)
+                this.indexField2.Text = this.indexedValuesList[currentIndex][1];
+            if (this.indexedValuesList[currentIndex][2] != null)
+                this.indexField3.Text = this.indexedValuesList[currentIndex][2];
+            if (this.indexedValuesList[currentIndex][3] != null)
+                this.indexField4.Text = this.indexedValuesList[currentIndex][3];
+            if (this.indexedValuesList[currentIndex][4] != null)
+                this.indexField5.Text = this.indexedValuesList[currentIndex][4];
+            if (this.indexedValuesList[currentIndex][5] != null)
+                this.indexField6.Text = this.indexedValuesList[currentIndex][5];
+            if (this.indexedValuesList[currentIndex][6] != null)
+                this.indexField7.Text = this.indexedValuesList[currentIndex][6];
+            if (this.indexedValuesList[currentIndex][7] != null)
+                this.indexField8.Text = this.indexedValuesList[currentIndex][7];
         }
 
         #region loadingFolder
@@ -145,6 +149,9 @@ namespace Image_indexer
         /// <param name="e"></param>
         private void selectTheFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.indexedValuesList.Clear();
+            this.newFileNames.Clear();
+            this.currentIndex = 0;
             using (var fbd = new FolderBrowserDialog())
             {
                 DialogResult result = fbd.ShowDialog();
@@ -170,6 +177,22 @@ namespace Image_indexer
                         }
                         MessageBox.Show("Found: " + validList.Count.ToString()+ " image files", "Opening the files");
                         this.currentIndex = 0;
+
+                        for (int i = 0; i < validList.Count; i++)
+                        {
+                            this.indexedValuesList.Add(new string[8]);
+                        }
+                        for (int i = 0; i < indexedValuesList.Count; i++)
+                        {
+                            for (int j = 0; j < 8; j++)
+                            {
+                                this.indexedValuesList[i][j] = "";
+                            }
+                        }
+
+                        for (int i = 0; i < validList.Count; i++)
+                            this.newFileNames.Add("");
+                        
                         if (loadImage(this.currentIndex) == true)
                         {
                             load_images_list();
@@ -182,6 +205,8 @@ namespace Image_indexer
 
         private void load_images_list()
         {
+            //clears previously added values
+            this.fileListBox.Items.Clear();
             for (int i = 0; i < validList.Count; i++)
             {
                 this.fileListBox.Items.Add(validList[i]);
@@ -240,89 +265,125 @@ namespace Image_indexer
 
         private void validateButton_Click(object sender, EventArgs e)
         {
-            //Field1
+            if (this.pictureBox1.Image == null)
+            {
+                MessageBox.Show("No images loaded up", "Validation");
+                return;
+            }
+                //Field1
             if(this.indexField1.TextLength>0)
-                this.indexedText[this.currentIndex].indexedText[0] = this.indexField1.Text;
+                this.indexedValuesList[this.currentIndex][0] = this.indexField1.Text;
             else
             {
                 MessageBox.Show("Index field 1 cannot be left empty as it is a required field", "Validation error");
+                focusOn(1);
                 return;
             }
             //Field2
             if (this.requiredBox2.Checked==true & this.indexField2.TextLength==0)
             {
                 MessageBox.Show("Index field 2 cannot be left empty as it is a required field", "Validation error");
+                focusOn(2);
                 return;
             }
             else
-                this.indexedText[this.currentIndex].indexedText[1] = this.indexField2.Text;
+                this.indexedValuesList[this.currentIndex][1] = this.indexField2.Text;
             //Field3
             if (this.requiredBox3.Checked == true & this.indexField3.TextLength == 0)
             {
                 MessageBox.Show("Index field 3 cannot be left empty as it is a required field", "Validation error");
+                focusOn(3);
                 return;
             }
             else
-                this.indexedText[this.currentIndex].indexedText[2] = this.indexField3.Text;
+                this.indexedValuesList[this.currentIndex][2] = this.indexField3.Text;
             //Field4
             if (this.requiredBox4.Checked == true & this.indexField4.TextLength == 0)
             {
                 MessageBox.Show("Index field 4 cannot be left empty as it is a required field", "Validation error");
+                focusOn(4);
                 return;
             }
             else
-                this.indexedText[this.currentIndex].indexedText[3] = this.indexField4.Text;
+                this.indexedValuesList[this.currentIndex][3] = this.indexField4.Text;
             //Field5
             if (this.requiredBox5.Checked == true & this.indexField5.TextLength == 0)
             {
                 MessageBox.Show("Index field 5 cannot be left empty as it is a required field", "Validation error");
+                focusOn(5);
                 return;
             }
             else
-                this.indexedText[this.currentIndex].indexedText[4] = this.indexField5.Text;
+                this.indexedValuesList[this.currentIndex][4] = this.indexField5.Text;
             //Field6
             if (this.requiredBox6.Checked == true & this.indexField6.TextLength == 0)
             {
                 MessageBox.Show("Index field 6 cannot be left empty as it is a required field", "Validation error");
+                focusOn(6);
                 return;
             }
             else
-                this.indexedText[this.currentIndex].indexedText[5] = this.indexField6.Text;
+                this.indexedValuesList[this.currentIndex][5] = this.indexField6.Text;
             //Field7
             if (this.requiredBox7.Checked == true & this.indexField7.TextLength == 0)
             {
                 MessageBox.Show("Index field 7 cannot be left empty as it is a required field", "Validation error");
+                focusOn(7);
                 return;
             }
             else
-                this.indexedText[this.currentIndex].indexedText[6] = this.indexField7.Text;
+                this.indexedValuesList[this.currentIndex][6] = this.indexField7.Text;
             //Field8
             if (this.requiredBox7.Checked == true & this.indexField7.TextLength == 0)
             {
                 MessageBox.Show("Index field 8 cannot be left empty as it is a required field", "Validation error");
+                focusOn(8);
                 return;
             }
             else
-                this.indexedText[this.currentIndex].indexedText[7] = this.indexField8.Text;
+                this.indexedValuesList[this.currentIndex][7] = this.indexField8.Text;
 
             //Creating a new filename
 
-            this.indexedText[this.currentIndex].newFilename = this.indexField1.Text;
+            this.newFileNames[this.currentIndex] = this.indexField1.Text;
             if(this.filenameBox2.Checked == true)
-                this.indexedText[this.currentIndex].newFilename += ("-" + this.indexField2.Text);
+                this.newFileNames[this.currentIndex] += ("-" + this.indexField2.Text);
             if(this.filenameBox3.Checked == true)
-                this.indexedText[this.currentIndex].newFilename += ("-" + this.indexField3.Text);
+                this.newFileNames[this.currentIndex] += ("-" + this.indexField3.Text);
             if (this.filenameBox4.Checked == true)
-                this.indexedText[this.currentIndex].newFilename += ("-" + this.indexField4.Text);
+                this.newFileNames[this.currentIndex] += ("-" + this.indexField4.Text);
             if (this.filenameBox5.Checked == true)
-                this.indexedText[this.currentIndex].newFilename += ("-" + this.indexField5.Text);
+                this.newFileNames[this.currentIndex] += ("-" + this.indexField5.Text);
             if (this.filenameBox6.Checked == true)
-                this.indexedText[this.currentIndex].newFilename += ("-" + this.indexField6.Text);
+                this.newFileNames[this.currentIndex] += ("-" + this.indexField6.Text);
             if (this.filenameBox7.Checked == true)
-                this.indexedText[this.currentIndex].newFilename += ("-" + this.indexField7.Text);
+                this.newFileNames[this.currentIndex] += ("-" + this.indexField7.Text);
             if (this.filenameBox8.Checked == true)
-                this.indexedText[this.currentIndex].newFilename += ("-" + this.indexField8.Text);
+                this.newFileNames[this.currentIndex] += ("-" + this.indexField8.Text);
 
+            this.currentIndex += 1;
+            loadImage(this.currentIndex);
+            return;
+        }
+
+        private void focusOn(int fieldNumber)
+        {
+            if (fieldNumber == 1)
+                this.indexField1.Focus();
+            if (fieldNumber == 2)
+                this.indexField2.Focus();
+            if (fieldNumber == 3)
+                this.indexField3.Focus();
+            if (fieldNumber == 4)
+                this.indexField4.Focus();
+            if (fieldNumber == 5)
+                this.indexField5.Focus();
+            if (fieldNumber == 6)
+                this.indexField6.Focus();
+            if (fieldNumber == 7)
+                this.indexField7.Focus();
+            if (fieldNumber == 8)
+                this.indexField8.Focus();
             return;
         }
         #endregion
@@ -379,7 +440,7 @@ namespace Image_indexer
             int ow = pictureBox1.Width;
             int oh = pictureBox1.Height;
             int VX, VY;
-            int zoomStep = 100;
+            int zoomStep = 200;
             if (e.Delta > 0)
             {
                 this.pictureBox1.Width += zoomStep;
@@ -650,6 +711,8 @@ namespace Image_indexer
             this.stickyBox8.Enabled = false;
             this.filenameBox8.Enabled = false;
             this.fieldnameField8.ReadOnly = true;
+
+            focusOn(1);
         }
 
 
