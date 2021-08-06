@@ -12,24 +12,24 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.IO;
-//using System.Deployment.Application;
+
 
 namespace Image_indexer
 {
-    
     /// <summary>
     /// Main class
     /// </summary>
     public partial class imageIndexerMainWindow : Form
     {
+        private string binPath { get; set; }
         private Image imgOriginal { get; set; }
         private string folder_location { get; set; }
         private string[] fileList { get; set; }
         private int currentIndex { get; set; }
 
-        private List<string[]> indexedValuesList = new List<string []>();
-        private List<string> newFileNames = new List<string>();
+        private List<string[]> indexedValuesList = new List<string[]>();
 
+        private List<string> newFileNames = new List<string>();
 
         private List<string> validList = new List<string>();
 
@@ -39,7 +39,7 @@ namespace Image_indexer
         {
             InitializeComponent();
             if (System.Diagnostics.Debugger.IsAttached == true)
-                this.versionLabel.Text = "Version: debugger " + typeof(imageIndexerMainWindow).Assembly.GetName().Version;
+                this.versionLabel.Text = "Development version: " + typeof(imageIndexerMainWindow).Assembly.GetName().Version;
             else
                 this.versionLabel.Text = "Version: " + System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString();
             lockIncompleteFunctions();
@@ -49,15 +49,17 @@ namespace Image_indexer
         {
             this.rotateClockwiseToolStripMenuItem.Enabled = false;
             this.rotateCounterwiseToolStripMenuItem.Enabled = false;
-            this.loadConfigFileToolStripMenuItem.Enabled = false;
+            this.saveConfigFileToolStripMenuItem.Enabled = false;
             this.helpToolStripMenuItem.Enabled = false;
             this.aboutToolStripMenuItem.Enabled = false;
-            this.nextPageToolStripMenuItem.Enabled = false;
-            this.previousPageToolStripMenuItem.Enabled = false;
+            this.nextPageToolStripMenuItem1.Enabled = false;
+            this.previousPageToolStripMenuItem1.Enabled = false;
+            this.pdfBrowser1.Visible = false;
+            this.enterLicenseKeyToolStripMenuItem.Enabled = false;
         }
 
         /// <summary>
-        /// This method checks if the file extension is either jpg jpeg tiff tif or png
+        /// This method checks if the file extension is either jpg jpeg tiff tif png or pdf (PDF will open in build in webbrowser
         /// </summary>
         /// <param name="file"></param>
         /// <returns></returns>
@@ -67,10 +69,20 @@ namespace Image_indexer
                file.Contains(".jpeg") == true ||
                file.Contains(".tiff") == true ||
                file.Contains(".tif") == true ||
-               file.Contains(".png")==true)
+               file.Contains(".png") == true ||
+               file.Contains(".pdf") == true)
                 return true;
             else
                 return false;
+        }
+
+        private void reloadPictureBox()
+        {
+            this.pictureBox1.Location = new System.Drawing.Point(12, 19);
+            this.pictureBox1.Size = new System.Drawing.Size(600, 800);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.Image = Properties.Resources.imageIndexer;
+            this.pdfBrowser1.Visible = false;
         }
 
         /// <summary>
@@ -78,7 +90,7 @@ namespace Image_indexer
         /// </summary>
         /// <param name="indexNumber">position in the validList List</param>
         /// <returns>true for success, false for fail - fail due to going over the range or file exception</returns>
-        private bool loadImage(int indexNumber)
+        private bool loadImage(int indexNumber, bool ifValidateButtonUsed = false)
         {
             if (indexNumber < 0)
             {
@@ -89,25 +101,56 @@ namespace Image_indexer
             {
                 try
                 {
-                    if(this.pictureBox1.Image != null)
-                        this.pictureBox1.Image.Dispose();
-                    this.imgOriginal = Image.FromFile(validList[indexNumber]);
-                    this.pictureBox1.Image = imgOriginal;
-                    this.pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-                    // reduce flickering
-                    this.DoubleBuffered = true;
-                    fitTheImage();
-                    this.fileListBox.SelectedItem= validList[indexNumber];
 
-                    loadMetadata(this.currentIndex);
-                    return true;
+                    if (this.pictureBox1.Image != null)
+                    {
+                        this.pictureBox1.Image.Dispose();
+                        reloadPictureBox();
+                    }
+                    if (validList[indexNumber].Contains(".pdf"))
+                    {
+                        this.pictureBox1.Visible = false;
+                        this.pdfBrowser1.Visible = true;
+                        this.pdfBrowser1.Navigate(validList[indexNumber]);
+                        loadMetadata(this.currentIndex, ifValidateButtonUsed);
+                        return true;
+                    }
+                    else
+                    {
+                        this.pdfBrowser1.DocumentText = "";
+                        this.pdfBrowser1.Visible = false;
+                        this.pictureBox1.Visible = true;
+                        this.pictureBox1.Image = Properties.Resources.imageIndexer;
+                        this.imgOriginal = Image.FromFile(validList[indexNumber]);
+                        this.pictureBox1.Image = imgOriginal;
+                        this.pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+                        // reduce flickering
+                        this.DoubleBuffered = true;
+                        fitTheImage();
+                        this.fileListBox.SelectedItem = validList[indexNumber];
+
+                        loadMetadata(this.currentIndex, ifValidateButtonUsed);
+                        return true;
+                    }
+
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show("Error 0x1001 - Error while opening file. File is potentially corrupted. \n\n" + e.ToString(),"Error!");
-                    this.pictureBox1.Image.Dispose();
-                    this.pictureBox1.Image = Properties.Resources.imageIndexer;
-                    return false;
+                    if (validList[indexNumber].Contains(".pdf"))
+                    {
+                        MessageBox.Show("Error 0x1002 - unable open the PDF file:\n" + validList[indexNumber] + "\n\n" + e.Message);
+                        return false;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error 0x1001 - Error while opening file. File is potentially corrupted. \n\n" + e.ToString(), "Error!");
+                        if (this.pictureBox1.Image != null)
+                        {
+                            this.pictureBox1.Image.Dispose();
+                            reloadPictureBox();
+                        }
+                        return false;
+                    }
                 }
             }
             else
@@ -121,24 +164,96 @@ namespace Image_indexer
 
 
 
-        private void loadMetadata(int currentIndex)
+        private void loadMetadata(int currentIndex, bool ifValidateButtonUsed)
         {
-            if(this.indexedValuesList[currentIndex][0]!=null)
-                this.indexField1.Text = this.indexedValuesList[currentIndex][0];
+            //field1
+            if (this.indexedValuesList[currentIndex][0] != null)
+                if (ifValidateButtonUsed == true)
+                {
+                    if (this.stickyBox1.Checked == true & currentIndex > 0)
+                        this.indexField1.Text = this.indexedValuesList[currentIndex - 1][0];
+                    else
+                        this.indexField1.Text = this.indexedValuesList[currentIndex][0];
+                }
+                else
+                    this.indexField1.Text = this.indexedValuesList[currentIndex][0];
+            //field2
             if (this.indexedValuesList[currentIndex][1] != null)
-                this.indexField2.Text = this.indexedValuesList[currentIndex][1];
+                if (ifValidateButtonUsed == true)
+                {
+                    if (this.stickyBox2.Checked == true & currentIndex > 0)
+                        this.indexField2.Text = this.indexedValuesList[currentIndex - 1][1];
+                    else
+                        this.indexField2.Text = this.indexedValuesList[currentIndex][1];
+                }
+                else
+                    this.indexField2.Text = this.indexedValuesList[currentIndex][1];
+            //field3
             if (this.indexedValuesList[currentIndex][2] != null)
-                this.indexField3.Text = this.indexedValuesList[currentIndex][2];
+                if (ifValidateButtonUsed == true)
+                {
+                    if (this.stickyBox3.Checked == true & currentIndex > 0)
+                        this.indexField3.Text = this.indexedValuesList[currentIndex - 1][2];
+                    else
+                        this.indexField3.Text = this.indexedValuesList[currentIndex][2];
+                }
+                else
+                    this.indexField3.Text = this.indexedValuesList[currentIndex][2];
+            //field4
             if (this.indexedValuesList[currentIndex][3] != null)
-                this.indexField4.Text = this.indexedValuesList[currentIndex][3];
+                if (ifValidateButtonUsed == true)
+                {
+                    if (this.stickyBox4.Checked == true & currentIndex > 0)
+                        this.indexField4.Text = this.indexedValuesList[currentIndex - 1][3];
+                    else
+                        this.indexField4.Text = this.indexedValuesList[currentIndex][3];
+                }
+                else
+                    this.indexField4.Text = this.indexedValuesList[currentIndex][3];
+            //field5
             if (this.indexedValuesList[currentIndex][4] != null)
-                this.indexField5.Text = this.indexedValuesList[currentIndex][4];
+                if (ifValidateButtonUsed == true)
+                {
+                    if (this.stickyBox5.Checked == true & currentIndex > 0)
+                        this.indexField5.Text = this.indexedValuesList[currentIndex - 1][4];
+                    else
+                        this.indexField5.Text = this.indexedValuesList[currentIndex][4];
+                }
+                else
+                    this.indexField5.Text = this.indexedValuesList[currentIndex][4];
+            //field6
             if (this.indexedValuesList[currentIndex][5] != null)
-                this.indexField6.Text = this.indexedValuesList[currentIndex][5];
+                if (ifValidateButtonUsed == true)
+                {
+                    if (this.stickyBox6.Checked == true & currentIndex > 0)
+                        this.indexField6.Text = this.indexedValuesList[currentIndex - 1][5];
+                    else
+                        this.indexField6.Text = this.indexedValuesList[currentIndex][5];
+                }
+                else
+                    this.indexField6.Text = this.indexedValuesList[currentIndex][5];
+            //field7
             if (this.indexedValuesList[currentIndex][6] != null)
-                this.indexField7.Text = this.indexedValuesList[currentIndex][6];
+                if (ifValidateButtonUsed == true)
+                {
+                    if (this.stickyBox7.Checked == true & currentIndex > 0)
+                        this.indexField7.Text = this.indexedValuesList[currentIndex - 1][6];
+                    else
+                        this.indexField7.Text = this.indexedValuesList[currentIndex][6];
+                }
+                else
+                    this.indexField7.Text = this.indexedValuesList[currentIndex][6];
+            //field8
             if (this.indexedValuesList[currentIndex][7] != null)
-                this.indexField8.Text = this.indexedValuesList[currentIndex][7];
+                if (ifValidateButtonUsed == true)
+                {
+                    if (this.stickyBox8.Checked == true & currentIndex > 0)
+                        this.indexField8.Text = this.indexedValuesList[currentIndex - 1][7];
+                    else
+                        this.indexField8.Text = this.indexedValuesList[currentIndex][7];
+                }
+                else
+                    this.indexField8.Text = this.indexedValuesList[currentIndex][7];
         }
 
         #region loadingFolder
@@ -163,19 +278,19 @@ namespace Image_indexer
                     validList = new List<string>();
                     this.folder_location = fbd.SelectedPath;
 
-                    
+
                     for (int i = 0; i < this.fileList.Length; i++)
                     {
                         Console.WriteLine(this.fileList[i]);
                     }
                     if (this.fileList.Length > 0)
                     {
-                        for (int i=0; i< this.fileList.Length;i++)
+                        for (int i = 0; i < this.fileList.Length; i++)
                         {
                             if (check_if_valid_extension(this.fileList[i]) == true)
                                 validList.Add(this.fileList[i]);
                         }
-                        MessageBox.Show("Found: " + validList.Count.ToString()+ " image files", "Opening the files");
+                        MessageBox.Show("Found: " + validList.Count.ToString() + " image files", "Opening the files");
                         this.currentIndex = 0;
 
                         for (int i = 0; i < validList.Count; i++)
@@ -192,7 +307,7 @@ namespace Image_indexer
 
                         for (int i = 0; i < validList.Count; i++)
                             this.newFileNames.Add("");
-                        
+
                         if (loadImage(this.currentIndex) == true)
                         {
                             load_images_list();
@@ -226,7 +341,7 @@ namespace Image_indexer
         {
             this.currentIndex = this.fileListBox.SelectedIndex;
             loadImage(currentIndex);
-            
+
         }
 
         private void nextDocumentButton_Click(object sender, EventArgs e)
@@ -270,8 +385,8 @@ namespace Image_indexer
                 MessageBox.Show("No images loaded up", "Validation");
                 return;
             }
-                //Field1
-            if(this.indexField1.TextLength>0)
+            //Field1
+            if (this.indexField1.TextLength > 0)
                 this.indexedValuesList[this.currentIndex][0] = this.indexField1.Text;
             else
             {
@@ -280,7 +395,7 @@ namespace Image_indexer
                 return;
             }
             //Field2
-            if (this.requiredBox2.Checked==true & this.indexField2.TextLength==0)
+            if (this.requiredBox2.Checked == true & this.indexField2.TextLength == 0)
             {
                 MessageBox.Show("Index field 2 cannot be left empty as it is a required field", "Validation error");
                 focusOn(2);
@@ -346,9 +461,9 @@ namespace Image_indexer
             //Creating a new filename
 
             this.newFileNames[this.currentIndex] = this.indexField1.Text;
-            if(this.filenameBox2.Checked == true)
+            if (this.filenameBox2.Checked == true)
                 this.newFileNames[this.currentIndex] += ("-" + this.indexField2.Text);
-            if(this.filenameBox3.Checked == true)
+            if (this.filenameBox3.Checked == true)
                 this.newFileNames[this.currentIndex] += ("-" + this.indexField3.Text);
             if (this.filenameBox4.Checked == true)
                 this.newFileNames[this.currentIndex] += ("-" + this.indexField4.Text);
@@ -362,7 +477,7 @@ namespace Image_indexer
                 this.newFileNames[this.currentIndex] += ("-" + this.indexField8.Text);
 
             this.currentIndex += 1;
-            loadImage(this.currentIndex);
+            loadImage(this.currentIndex, true);
             return;
         }
 
@@ -396,6 +511,8 @@ namespace Image_indexer
 
         private void fitTheImage()
         {
+            if (this.pictureBox1.Image == null)
+                return;
             this.pictureBox1.Location = new System.Drawing.Point(6, 19);
             this.pictureBox1.Size = new System.Drawing.Size(600, 800);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -482,6 +599,11 @@ namespace Image_indexer
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void applyButton_Click(object sender, EventArgs e)
+        {
+            refreshSettings();
+        }
+
+        private void refreshSettings()
         {
             this.stickyBox1.Enabled = true;
             this.fieldnameField1.ReadOnly = false;
@@ -667,10 +789,14 @@ namespace Image_indexer
                 this.filenameBox8.Checked = false;
                 this.indexFieldsCount = 7;
             }
-
         }
 
         private void propertiesLockButton_Click(object sender, EventArgs e)
+        {
+            lockProperties();
+        }
+
+        private void lockProperties()
         {
             this.requiredBox1.Enabled = false;
             this.stickyBox1.Enabled = false;
@@ -715,8 +841,170 @@ namespace Image_indexer
             focusOn(1);
         }
 
-
         #endregion
 
+        #region Config loading and saving
+        private void loadConfigFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog settingsSelection = new OpenFileDialog();
+            settingsSelection.Title = "Select BIN file with settings";
+            settingsSelection.Filter = "BIN files (*.bin)|*.bin";
+            settingsSelection.FilterIndex = 1;
+            settingsSelection.RestoreDirectory = true;
+
+            if(settingsSelection.ShowDialog() == DialogResult.OK)
+            {
+                this.binPath = settingsSelection.FileName;
+            }
+            else
+            {
+                MessageBox.Show("No bin file selected, please try again", "Settings file selection error");
+                return;
+            }
+
+            List<string> settingsData = new List<string>();
+            try
+            {
+                string[] lines = System.IO.File.ReadAllLines(this.binPath);
+                var size = lines.Length;
+                for (int i = 0; i < size; i++)
+                {
+                    //splits the columns by comma
+                    string[] columns = lines[i].Split(',');
+                    foreach (string columnsItem in columns)
+                    {
+                        settingsData.Add(columnsItem);
+                    }
+                }
+                
+            }
+            catch (Exception IOException)
+            {
+                MessageBox.Show("Unable to open the settings file\n" + IOException.ToString(), "Settings opening error");
+                return;
+            }
+
+            settingItems loadedSettings = new settingItems(settingsData);
+            applySettings(loadedSettings);
+            lockProperties();
+
+            }
+
+        private void applySettings(settingItems settings)
+        {
+            if (settings.Title == null) 
+            {
+                MessageBox.Show("Settings file is corrupted");
+                return; 
+            }
+            if (settings.FileRenaming == true)
+                this.filesRenamingBox.Checked = true;
+            else
+                this.filesRenamingBox.Checked = false;
+
+            refreshSettings();
+            if (settings.Fields[0, 1] == "true")
+            {
+                this.enableBox1.Checked = true;
+                this.fieldnameField1.Text = settings.Fields[0, 2];
+                this.stickyBox1.Checked = Convert.ToBoolean(settings.Fields[0, 3]);
+                this.requiredBox1.Checked = Convert.ToBoolean(settings.Fields[0, 4]);
+                this.filenameBox1.Checked = Convert.ToBoolean(settings.Fields[0, 5]);
+            }
+
+            if (settings.Fields[1, 1] == "true")
+            {
+                this.enableBox2.Checked = true;
+                this.fieldnameField2.Text = settings.Fields[1, 2];
+                this.stickyBox2.Checked = Convert.ToBoolean(settings.Fields[1, 3]);
+                this.requiredBox2.Checked = Convert.ToBoolean(settings.Fields[1, 4]);
+                this.filenameBox2.Checked = Convert.ToBoolean(settings.Fields[1, 5]);
+            }
+
+            if (settings.Fields[2, 1] == "true")
+            {
+                this.enableBox3.Checked = true;
+                this.fieldnameField3.Text = settings.Fields[2, 2];
+                this.stickyBox3.Checked = Convert.ToBoolean(settings.Fields[2, 3]);
+                this.requiredBox3.Checked = Convert.ToBoolean(settings.Fields[2, 4]);
+                this.filenameBox3.Checked = Convert.ToBoolean(settings.Fields[2, 5]);
+            }
+
+            if (settings.Fields[3, 1] == "true")
+            {
+                this.enableBox4.Checked = true;
+                this.fieldnameField4.Text = settings.Fields[3, 2];
+                this.stickyBox4.Checked = Convert.ToBoolean(settings.Fields[3, 3]);
+                this.requiredBox4.Checked = Convert.ToBoolean(settings.Fields[3, 4]);
+                this.filenameBox4.Checked = Convert.ToBoolean(settings.Fields[3, 5]);
+            }
+
+            if (settings.Fields[4, 1] == "true")
+            {
+                this.enableBox5.Checked = true;
+                this.fieldnameField5.Text = settings.Fields[4, 2];
+                this.stickyBox5.Checked = Convert.ToBoolean(settings.Fields[4, 3]);
+                this.requiredBox5.Checked = Convert.ToBoolean(settings.Fields[4, 4]);
+                this.filenameBox5.Checked = Convert.ToBoolean(settings.Fields[4, 5]);
+            }
+
+            if (settings.Fields[5, 1] == "true")
+            {
+                this.enableBox6.Checked = true;
+                this.fieldnameField6.Text = settings.Fields[5, 2];
+                this.stickyBox6.Checked = Convert.ToBoolean(settings.Fields[5, 3]);
+                this.requiredBox6.Checked = Convert.ToBoolean(settings.Fields[5, 4]);
+                this.filenameBox6.Checked = Convert.ToBoolean(settings.Fields[5, 5]);
+            }
+
+            if (settings.Fields[6, 1] == "true")
+            {
+                this.enableBox7.Checked = true;
+                this.fieldnameField7.Text = settings.Fields[6, 2];
+                this.stickyBox7.Checked = Convert.ToBoolean(settings.Fields[6, 3]);
+                this.requiredBox7.Checked = Convert.ToBoolean(settings.Fields[6, 4]);
+                this.filenameBox7.Checked = Convert.ToBoolean(settings.Fields[6, 5]);
+            }
+
+            if (settings.Fields[7, 1] == "true")
+            {
+                this.enableBox8.Checked = true;
+                this.fieldnameField8.Text = settings.Fields[7, 2];
+                this.stickyBox8.Checked = Convert.ToBoolean(settings.Fields[7, 3]);
+                this.requiredBox8.Checked = Convert.ToBoolean(settings.Fields[7, 4]);
+                this.filenameBox8.Checked = Convert.ToBoolean(settings.Fields[7, 5]);
+            }
+            refreshSettings();
+        }
+
+        #endregion
+    }
+    public class settingItems 
+    {
+        public string Title { get; set; }
+        public string ProjectID { get; set; }
+        public bool FileRenaming { get; set; }
+        public string[,] Fields { get; set; }
+
+        public settingItems(List<string> data)
+        {
+            Fields = new string[8, 6];
+            this.Title = data[0];
+            this.ProjectID = data[1];
+            this.FileRenaming = Convert.ToBoolean(data[2]);
+
+            MessageBox.Show(data.Count.ToString());
+
+            int index = 3;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 6; j++)
+                {
+                    //Console.WriteLine(data[index]);
+                    this.Fields[i, j] = data[index];
+                    index = index + 1;
+                }
+            }
+        }
     }
 }

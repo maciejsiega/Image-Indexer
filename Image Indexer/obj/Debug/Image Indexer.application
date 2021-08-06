@@ -7,14 +7,14 @@
     <framework targetVersion="4.7.2" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="Image Indexer.exe.manifest" size="3999">
+    <dependentAssembly dependencyType="install" codebase="Image Indexer.exe.manifest" size="6785">
       <assemblyIdentity name="Image Indexer.exe" version="0.7.0.3" publicKeyToken="0000000000000000" language="en-GB" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>kQ4qE3u4C9O5oGUeV5UUuFXhkyqtq0EQCHhb2LsEPb8=</dsig:DigestValue>
+        <dsig:DigestValue>5L2I22FT9aVkKTQa7LcwYTHWuXCrBzbC4j9tiMYWzFQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
