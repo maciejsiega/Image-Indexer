@@ -140,7 +140,7 @@ namespace Image_indexer
             this.pageToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1424, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1684, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -287,12 +287,11 @@ namespace Image_indexer
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = global::Image_indexer.Properties.Resources.imageIndexer;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 19);
+            this.pictureBox1.Location = new System.Drawing.Point(6, 11);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(600, 800);
+            this.pictureBox1.Size = new System.Drawing.Size(867, 815);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -300,9 +299,6 @@ namespace Image_indexer
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.ColumnCount = 6;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.00672F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.021F));
@@ -377,7 +373,7 @@ namespace Image_indexer
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.3676F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.14983F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(764, 306);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(761, 306);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // filenameBox7
@@ -386,7 +382,7 @@ namespace Image_indexer
             this.filenameBox7.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.filenameBox7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.filenameBox7.Enabled = false;
-            this.filenameBox7.Location = new System.Drawing.Point(689, 239);
+            this.filenameBox7.Location = new System.Drawing.Point(686, 239);
             this.filenameBox7.Name = "filenameBox7";
             this.filenameBox7.Size = new System.Drawing.Size(72, 28);
             this.filenameBox7.TabIndex = 69;
@@ -399,7 +395,7 @@ namespace Image_indexer
             this.filenameBox6.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.filenameBox6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.filenameBox6.Enabled = false;
-            this.filenameBox6.Location = new System.Drawing.Point(689, 207);
+            this.filenameBox6.Location = new System.Drawing.Point(686, 207);
             this.filenameBox6.Name = "filenameBox6";
             this.filenameBox6.Size = new System.Drawing.Size(72, 26);
             this.filenameBox6.TabIndex = 68;
@@ -412,7 +408,7 @@ namespace Image_indexer
             this.filenameBox5.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.filenameBox5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.filenameBox5.Enabled = false;
-            this.filenameBox5.Location = new System.Drawing.Point(689, 173);
+            this.filenameBox5.Location = new System.Drawing.Point(686, 173);
             this.filenameBox5.Name = "filenameBox5";
             this.filenameBox5.Size = new System.Drawing.Size(72, 28);
             this.filenameBox5.TabIndex = 67;
@@ -424,11 +420,11 @@ namespace Image_indexer
             this.indexField1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.indexField1.Location = new System.Drawing.Point(258, 37);
+            this.indexField1.Location = new System.Drawing.Point(256, 37);
             this.indexField1.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
             this.indexField1.MaxLength = 30;
             this.indexField1.Name = "indexField1";
-            this.indexField1.Size = new System.Drawing.Size(268, 20);
+            this.indexField1.Size = new System.Drawing.Size(267, 20);
             this.indexField1.TabIndex = 1;
             this.indexField1.WordWrap = false;
             // 
@@ -438,7 +434,7 @@ namespace Image_indexer
             this.stickyBox8.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.stickyBox8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.stickyBox8.Enabled = false;
-            this.stickyBox8.Location = new System.Drawing.Point(535, 273);
+            this.stickyBox8.Location = new System.Drawing.Point(532, 273);
             this.stickyBox8.Name = "stickyBox8";
             this.stickyBox8.Size = new System.Drawing.Size(71, 30);
             this.stickyBox8.TabIndex = 43;
@@ -451,7 +447,7 @@ namespace Image_indexer
             this.requiredBox7.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.requiredBox7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.requiredBox7.Enabled = false;
-            this.requiredBox7.Location = new System.Drawing.Point(612, 239);
+            this.requiredBox7.Location = new System.Drawing.Point(609, 239);
             this.requiredBox7.Name = "requiredBox7";
             this.requiredBox7.Size = new System.Drawing.Size(71, 28);
             this.requiredBox7.TabIndex = 39;
@@ -464,7 +460,7 @@ namespace Image_indexer
             this.stickyBox7.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.stickyBox7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.stickyBox7.Enabled = false;
-            this.stickyBox7.Location = new System.Drawing.Point(535, 239);
+            this.stickyBox7.Location = new System.Drawing.Point(532, 239);
             this.stickyBox7.Name = "stickyBox7";
             this.stickyBox7.Size = new System.Drawing.Size(71, 28);
             this.stickyBox7.TabIndex = 38;
@@ -478,7 +474,7 @@ namespace Image_indexer
             this.enableBox7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.enableBox7.Location = new System.Drawing.Point(3, 239);
             this.enableBox7.Name = "enableBox7";
-            this.enableBox7.Size = new System.Drawing.Size(55, 28);
+            this.enableBox7.Size = new System.Drawing.Size(54, 28);
             this.enableBox7.TabIndex = 35;
             this.enableBox7.TabStop = false;
             this.enableBox7.UseVisualStyleBackColor = true;
@@ -489,7 +485,7 @@ namespace Image_indexer
             this.requiredBox6.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.requiredBox6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.requiredBox6.Enabled = false;
-            this.requiredBox6.Location = new System.Drawing.Point(612, 207);
+            this.requiredBox6.Location = new System.Drawing.Point(609, 207);
             this.requiredBox6.Name = "requiredBox6";
             this.requiredBox6.Size = new System.Drawing.Size(71, 26);
             this.requiredBox6.TabIndex = 34;
@@ -502,7 +498,7 @@ namespace Image_indexer
             this.stickyBox6.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.stickyBox6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.stickyBox6.Enabled = false;
-            this.stickyBox6.Location = new System.Drawing.Point(535, 207);
+            this.stickyBox6.Location = new System.Drawing.Point(532, 207);
             this.stickyBox6.Name = "stickyBox6";
             this.stickyBox6.Size = new System.Drawing.Size(71, 26);
             this.stickyBox6.TabIndex = 33;
@@ -516,7 +512,7 @@ namespace Image_indexer
             this.enableBox6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.enableBox6.Location = new System.Drawing.Point(3, 207);
             this.enableBox6.Name = "enableBox6";
-            this.enableBox6.Size = new System.Drawing.Size(55, 26);
+            this.enableBox6.Size = new System.Drawing.Size(54, 26);
             this.enableBox6.TabIndex = 30;
             this.enableBox6.TabStop = false;
             this.enableBox6.UseVisualStyleBackColor = true;
@@ -527,7 +523,7 @@ namespace Image_indexer
             this.requiredBox5.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.requiredBox5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.requiredBox5.Enabled = false;
-            this.requiredBox5.Location = new System.Drawing.Point(612, 173);
+            this.requiredBox5.Location = new System.Drawing.Point(609, 173);
             this.requiredBox5.Name = "requiredBox5";
             this.requiredBox5.Size = new System.Drawing.Size(71, 28);
             this.requiredBox5.TabIndex = 29;
@@ -540,7 +536,7 @@ namespace Image_indexer
             this.stickyBox5.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.stickyBox5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.stickyBox5.Enabled = false;
-            this.stickyBox5.Location = new System.Drawing.Point(535, 173);
+            this.stickyBox5.Location = new System.Drawing.Point(532, 173);
             this.stickyBox5.Name = "stickyBox5";
             this.stickyBox5.Size = new System.Drawing.Size(71, 28);
             this.stickyBox5.TabIndex = 28;
@@ -554,7 +550,7 @@ namespace Image_indexer
             this.enableBox5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.enableBox5.Location = new System.Drawing.Point(3, 173);
             this.enableBox5.Name = "enableBox5";
-            this.enableBox5.Size = new System.Drawing.Size(55, 28);
+            this.enableBox5.Size = new System.Drawing.Size(54, 28);
             this.enableBox5.TabIndex = 25;
             this.enableBox5.TabStop = false;
             this.enableBox5.UseVisualStyleBackColor = true;
@@ -565,7 +561,7 @@ namespace Image_indexer
             this.requiredBox4.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.requiredBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.requiredBox4.Enabled = false;
-            this.requiredBox4.Location = new System.Drawing.Point(612, 139);
+            this.requiredBox4.Location = new System.Drawing.Point(609, 139);
             this.requiredBox4.Name = "requiredBox4";
             this.requiredBox4.Size = new System.Drawing.Size(71, 28);
             this.requiredBox4.TabIndex = 24;
@@ -578,7 +574,7 @@ namespace Image_indexer
             this.stickyBox4.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.stickyBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.stickyBox4.Enabled = false;
-            this.stickyBox4.Location = new System.Drawing.Point(535, 139);
+            this.stickyBox4.Location = new System.Drawing.Point(532, 139);
             this.stickyBox4.Name = "stickyBox4";
             this.stickyBox4.Size = new System.Drawing.Size(71, 28);
             this.stickyBox4.TabIndex = 23;
@@ -592,7 +588,7 @@ namespace Image_indexer
             this.enableBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.enableBox4.Location = new System.Drawing.Point(3, 139);
             this.enableBox4.Name = "enableBox4";
-            this.enableBox4.Size = new System.Drawing.Size(55, 28);
+            this.enableBox4.Size = new System.Drawing.Size(54, 28);
             this.enableBox4.TabIndex = 20;
             this.enableBox4.TabStop = false;
             this.enableBox4.UseVisualStyleBackColor = true;
@@ -603,7 +599,7 @@ namespace Image_indexer
             this.requiredBox3.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.requiredBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.requiredBox3.Enabled = false;
-            this.requiredBox3.Location = new System.Drawing.Point(612, 105);
+            this.requiredBox3.Location = new System.Drawing.Point(609, 105);
             this.requiredBox3.Name = "requiredBox3";
             this.requiredBox3.Size = new System.Drawing.Size(71, 28);
             this.requiredBox3.TabIndex = 19;
@@ -616,7 +612,7 @@ namespace Image_indexer
             this.stickyBox3.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.stickyBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.stickyBox3.Enabled = false;
-            this.stickyBox3.Location = new System.Drawing.Point(535, 105);
+            this.stickyBox3.Location = new System.Drawing.Point(532, 105);
             this.stickyBox3.Name = "stickyBox3";
             this.stickyBox3.Size = new System.Drawing.Size(71, 28);
             this.stickyBox3.TabIndex = 18;
@@ -630,7 +626,7 @@ namespace Image_indexer
             this.enableBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.enableBox3.Location = new System.Drawing.Point(3, 105);
             this.enableBox3.Name = "enableBox3";
-            this.enableBox3.Size = new System.Drawing.Size(55, 28);
+            this.enableBox3.Size = new System.Drawing.Size(54, 28);
             this.enableBox3.TabIndex = 15;
             this.enableBox3.TabStop = false;
             this.enableBox3.UseVisualStyleBackColor = true;
@@ -641,7 +637,7 @@ namespace Image_indexer
             this.requiredBox2.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.requiredBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.requiredBox2.Enabled = false;
-            this.requiredBox2.Location = new System.Drawing.Point(612, 71);
+            this.requiredBox2.Location = new System.Drawing.Point(609, 71);
             this.requiredBox2.Name = "requiredBox2";
             this.requiredBox2.Size = new System.Drawing.Size(71, 28);
             this.requiredBox2.TabIndex = 14;
@@ -654,7 +650,7 @@ namespace Image_indexer
             this.stickyBox2.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.stickyBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.stickyBox2.Enabled = false;
-            this.stickyBox2.Location = new System.Drawing.Point(535, 71);
+            this.stickyBox2.Location = new System.Drawing.Point(532, 71);
             this.stickyBox2.Name = "stickyBox2";
             this.stickyBox2.Size = new System.Drawing.Size(71, 28);
             this.stickyBox2.TabIndex = 13;
@@ -668,7 +664,7 @@ namespace Image_indexer
             this.enableBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.enableBox2.Location = new System.Drawing.Point(3, 71);
             this.enableBox2.Name = "enableBox2";
-            this.enableBox2.Size = new System.Drawing.Size(55, 28);
+            this.enableBox2.Size = new System.Drawing.Size(54, 28);
             this.enableBox2.TabIndex = 10;
             this.enableBox2.TabStop = false;
             this.enableBox2.UseVisualStyleBackColor = true;
@@ -681,7 +677,7 @@ namespace Image_indexer
             this.requiredBox1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.requiredBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.requiredBox1.Enabled = false;
-            this.requiredBox1.Location = new System.Drawing.Point(612, 37);
+            this.requiredBox1.Location = new System.Drawing.Point(609, 37);
             this.requiredBox1.Name = "requiredBox1";
             this.requiredBox1.Size = new System.Drawing.Size(71, 28);
             this.requiredBox1.TabIndex = 9;
@@ -693,7 +689,7 @@ namespace Image_indexer
             this.stickyBox1.AutoSize = true;
             this.stickyBox1.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.stickyBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.stickyBox1.Location = new System.Drawing.Point(535, 37);
+            this.stickyBox1.Location = new System.Drawing.Point(532, 37);
             this.stickyBox1.Name = "stickyBox1";
             this.stickyBox1.Size = new System.Drawing.Size(71, 28);
             this.stickyBox1.TabIndex = 8;
@@ -704,7 +700,7 @@ namespace Image_indexer
             // 
             this.requiredLabel.AutoSize = true;
             this.requiredLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.requiredLabel.Location = new System.Drawing.Point(612, 0);
+            this.requiredLabel.Location = new System.Drawing.Point(609, 0);
             this.requiredLabel.Name = "requiredLabel";
             this.requiredLabel.Size = new System.Drawing.Size(71, 34);
             this.requiredLabel.TabIndex = 4;
@@ -715,7 +711,7 @@ namespace Image_indexer
             // 
             this.stickyLabel.AutoSize = true;
             this.stickyLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.stickyLabel.Location = new System.Drawing.Point(535, 0);
+            this.stickyLabel.Location = new System.Drawing.Point(532, 0);
             this.stickyLabel.Name = "stickyLabel";
             this.stickyLabel.Size = new System.Drawing.Size(71, 34);
             this.stickyLabel.TabIndex = 3;
@@ -726,9 +722,9 @@ namespace Image_indexer
             // 
             this.indexLabel.AutoSize = true;
             this.indexLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.indexLabel.Location = new System.Drawing.Point(255, 0);
+            this.indexLabel.Location = new System.Drawing.Point(253, 0);
             this.indexLabel.Name = "indexLabel";
-            this.indexLabel.Size = new System.Drawing.Size(274, 34);
+            this.indexLabel.Size = new System.Drawing.Size(273, 34);
             this.indexLabel.TabIndex = 2;
             this.indexLabel.Text = "Index value";
             this.indexLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -737,9 +733,9 @@ namespace Image_indexer
             // 
             this.fieldnameLabel.AutoSize = true;
             this.fieldnameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fieldnameLabel.Location = new System.Drawing.Point(64, 0);
+            this.fieldnameLabel.Location = new System.Drawing.Point(63, 0);
             this.fieldnameLabel.Name = "fieldnameLabel";
-            this.fieldnameLabel.Size = new System.Drawing.Size(185, 34);
+            this.fieldnameLabel.Size = new System.Drawing.Size(184, 34);
             this.fieldnameLabel.TabIndex = 1;
             this.fieldnameLabel.Text = "Field name";
             this.fieldnameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -750,7 +746,7 @@ namespace Image_indexer
             this.enableLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.enableLabel.Location = new System.Drawing.Point(3, 0);
             this.enableLabel.Name = "enableLabel";
-            this.enableLabel.Size = new System.Drawing.Size(55, 34);
+            this.enableLabel.Size = new System.Drawing.Size(54, 34);
             this.enableLabel.TabIndex = 0;
             this.enableLabel.Text = "Enable";
             this.enableLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -765,7 +761,7 @@ namespace Image_indexer
             this.enableBox1.Enabled = false;
             this.enableBox1.Location = new System.Drawing.Point(3, 37);
             this.enableBox1.Name = "enableBox1";
-            this.enableBox1.Size = new System.Drawing.Size(55, 28);
+            this.enableBox1.Size = new System.Drawing.Size(54, 28);
             this.enableBox1.TabIndex = 5;
             this.enableBox1.TabStop = false;
             this.enableBox1.UseVisualStyleBackColor = true;
@@ -776,7 +772,7 @@ namespace Image_indexer
             this.filenameBox8.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.filenameBox8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.filenameBox8.Enabled = false;
-            this.filenameBox8.Location = new System.Drawing.Point(689, 273);
+            this.filenameBox8.Location = new System.Drawing.Point(686, 273);
             this.filenameBox8.Name = "filenameBox8";
             this.filenameBox8.Size = new System.Drawing.Size(72, 30);
             this.filenameBox8.TabIndex = 44;
@@ -788,11 +784,11 @@ namespace Image_indexer
             this.fieldnameField1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.fieldnameField1.Location = new System.Drawing.Point(67, 37);
+            this.fieldnameField1.Location = new System.Drawing.Point(66, 37);
             this.fieldnameField1.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
             this.fieldnameField1.MaxLength = 30;
             this.fieldnameField1.Name = "fieldnameField1";
-            this.fieldnameField1.Size = new System.Drawing.Size(179, 20);
+            this.fieldnameField1.Size = new System.Drawing.Size(178, 20);
             this.fieldnameField1.TabIndex = 45;
             this.fieldnameField1.TabStop = false;
             this.fieldnameField1.WordWrap = false;
@@ -802,12 +798,12 @@ namespace Image_indexer
             this.fieldnameField2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.fieldnameField2.Location = new System.Drawing.Point(67, 71);
+            this.fieldnameField2.Location = new System.Drawing.Point(66, 71);
             this.fieldnameField2.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
             this.fieldnameField2.MaxLength = 30;
             this.fieldnameField2.Name = "fieldnameField2";
             this.fieldnameField2.ReadOnly = true;
-            this.fieldnameField2.Size = new System.Drawing.Size(179, 20);
+            this.fieldnameField2.Size = new System.Drawing.Size(178, 20);
             this.fieldnameField2.TabIndex = 46;
             this.fieldnameField2.TabStop = false;
             this.fieldnameField2.WordWrap = false;
@@ -817,12 +813,12 @@ namespace Image_indexer
             this.indexField2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.indexField2.Location = new System.Drawing.Point(258, 71);
+            this.indexField2.Location = new System.Drawing.Point(256, 71);
             this.indexField2.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
             this.indexField2.MaxLength = 30;
             this.indexField2.Name = "indexField2";
             this.indexField2.ReadOnly = true;
-            this.indexField2.Size = new System.Drawing.Size(268, 20);
+            this.indexField2.Size = new System.Drawing.Size(267, 20);
             this.indexField2.TabIndex = 2;
             this.indexField2.WordWrap = false;
             // 
@@ -831,12 +827,12 @@ namespace Image_indexer
             this.indexField3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.indexField3.Location = new System.Drawing.Point(258, 105);
+            this.indexField3.Location = new System.Drawing.Point(256, 105);
             this.indexField3.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
             this.indexField3.MaxLength = 30;
             this.indexField3.Name = "indexField3";
             this.indexField3.ReadOnly = true;
-            this.indexField3.Size = new System.Drawing.Size(268, 20);
+            this.indexField3.Size = new System.Drawing.Size(267, 20);
             this.indexField3.TabIndex = 3;
             this.indexField3.WordWrap = false;
             // 
@@ -845,12 +841,12 @@ namespace Image_indexer
             this.indexField4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.indexField4.Location = new System.Drawing.Point(258, 139);
+            this.indexField4.Location = new System.Drawing.Point(256, 139);
             this.indexField4.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
             this.indexField4.MaxLength = 30;
             this.indexField4.Name = "indexField4";
             this.indexField4.ReadOnly = true;
-            this.indexField4.Size = new System.Drawing.Size(268, 20);
+            this.indexField4.Size = new System.Drawing.Size(267, 20);
             this.indexField4.TabIndex = 4;
             this.indexField4.WordWrap = false;
             // 
@@ -859,12 +855,12 @@ namespace Image_indexer
             this.indexField5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.indexField5.Location = new System.Drawing.Point(258, 173);
+            this.indexField5.Location = new System.Drawing.Point(256, 173);
             this.indexField5.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
             this.indexField5.MaxLength = 30;
             this.indexField5.Name = "indexField5";
             this.indexField5.ReadOnly = true;
-            this.indexField5.Size = new System.Drawing.Size(268, 20);
+            this.indexField5.Size = new System.Drawing.Size(267, 20);
             this.indexField5.TabIndex = 5;
             this.indexField5.WordWrap = false;
             // 
@@ -873,12 +869,12 @@ namespace Image_indexer
             this.indexField6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.indexField6.Location = new System.Drawing.Point(258, 207);
+            this.indexField6.Location = new System.Drawing.Point(256, 207);
             this.indexField6.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
             this.indexField6.MaxLength = 30;
             this.indexField6.Name = "indexField6";
             this.indexField6.ReadOnly = true;
-            this.indexField6.Size = new System.Drawing.Size(268, 20);
+            this.indexField6.Size = new System.Drawing.Size(267, 20);
             this.indexField6.TabIndex = 6;
             this.indexField6.WordWrap = false;
             // 
@@ -887,12 +883,12 @@ namespace Image_indexer
             this.indexField7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.indexField7.Location = new System.Drawing.Point(258, 239);
+            this.indexField7.Location = new System.Drawing.Point(256, 239);
             this.indexField7.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
             this.indexField7.MaxLength = 30;
             this.indexField7.Name = "indexField7";
             this.indexField7.ReadOnly = true;
-            this.indexField7.Size = new System.Drawing.Size(268, 20);
+            this.indexField7.Size = new System.Drawing.Size(267, 20);
             this.indexField7.TabIndex = 7;
             this.indexField7.WordWrap = false;
             // 
@@ -901,12 +897,12 @@ namespace Image_indexer
             this.fieldnameField3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.fieldnameField3.Location = new System.Drawing.Point(67, 105);
+            this.fieldnameField3.Location = new System.Drawing.Point(66, 105);
             this.fieldnameField3.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
             this.fieldnameField3.MaxLength = 30;
             this.fieldnameField3.Name = "fieldnameField3";
             this.fieldnameField3.ReadOnly = true;
-            this.fieldnameField3.Size = new System.Drawing.Size(179, 20);
+            this.fieldnameField3.Size = new System.Drawing.Size(178, 20);
             this.fieldnameField3.TabIndex = 55;
             this.fieldnameField3.TabStop = false;
             this.fieldnameField3.WordWrap = false;
@@ -916,12 +912,12 @@ namespace Image_indexer
             this.fieldnameField4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.fieldnameField4.Location = new System.Drawing.Point(67, 139);
+            this.fieldnameField4.Location = new System.Drawing.Point(66, 139);
             this.fieldnameField4.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
             this.fieldnameField4.MaxLength = 30;
             this.fieldnameField4.Name = "fieldnameField4";
             this.fieldnameField4.ReadOnly = true;
-            this.fieldnameField4.Size = new System.Drawing.Size(179, 20);
+            this.fieldnameField4.Size = new System.Drawing.Size(178, 20);
             this.fieldnameField4.TabIndex = 56;
             this.fieldnameField4.TabStop = false;
             this.fieldnameField4.WordWrap = false;
@@ -931,12 +927,12 @@ namespace Image_indexer
             this.fieldnameField5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.fieldnameField5.Location = new System.Drawing.Point(67, 173);
+            this.fieldnameField5.Location = new System.Drawing.Point(66, 173);
             this.fieldnameField5.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
             this.fieldnameField5.MaxLength = 30;
             this.fieldnameField5.Name = "fieldnameField5";
             this.fieldnameField5.ReadOnly = true;
-            this.fieldnameField5.Size = new System.Drawing.Size(179, 20);
+            this.fieldnameField5.Size = new System.Drawing.Size(178, 20);
             this.fieldnameField5.TabIndex = 57;
             this.fieldnameField5.TabStop = false;
             this.fieldnameField5.WordWrap = false;
@@ -946,12 +942,12 @@ namespace Image_indexer
             this.fieldnameField6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.fieldnameField6.Location = new System.Drawing.Point(67, 207);
+            this.fieldnameField6.Location = new System.Drawing.Point(66, 207);
             this.fieldnameField6.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
             this.fieldnameField6.MaxLength = 30;
             this.fieldnameField6.Name = "fieldnameField6";
             this.fieldnameField6.ReadOnly = true;
-            this.fieldnameField6.Size = new System.Drawing.Size(179, 20);
+            this.fieldnameField6.Size = new System.Drawing.Size(178, 20);
             this.fieldnameField6.TabIndex = 58;
             this.fieldnameField6.TabStop = false;
             this.fieldnameField6.WordWrap = false;
@@ -961,12 +957,12 @@ namespace Image_indexer
             this.fieldnameField7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.fieldnameField7.Location = new System.Drawing.Point(67, 239);
+            this.fieldnameField7.Location = new System.Drawing.Point(66, 239);
             this.fieldnameField7.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
             this.fieldnameField7.MaxLength = 30;
             this.fieldnameField7.Name = "fieldnameField7";
             this.fieldnameField7.ReadOnly = true;
-            this.fieldnameField7.Size = new System.Drawing.Size(179, 20);
+            this.fieldnameField7.Size = new System.Drawing.Size(178, 20);
             this.fieldnameField7.TabIndex = 59;
             this.fieldnameField7.TabStop = false;
             this.fieldnameField7.WordWrap = false;
@@ -975,7 +971,7 @@ namespace Image_indexer
             // 
             this.filenameLabel.AutoSize = true;
             this.filenameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.filenameLabel.Location = new System.Drawing.Point(689, 0);
+            this.filenameLabel.Location = new System.Drawing.Point(686, 0);
             this.filenameLabel.Name = "filenameLabel";
             this.filenameLabel.Size = new System.Drawing.Size(72, 34);
             this.filenameLabel.TabIndex = 62;
@@ -990,7 +986,7 @@ namespace Image_indexer
             this.filenameBox1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.filenameBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.filenameBox1.Enabled = false;
-            this.filenameBox1.Location = new System.Drawing.Point(689, 37);
+            this.filenameBox1.Location = new System.Drawing.Point(686, 37);
             this.filenameBox1.Name = "filenameBox1";
             this.filenameBox1.Size = new System.Drawing.Size(72, 28);
             this.filenameBox1.TabIndex = 63;
@@ -1003,7 +999,7 @@ namespace Image_indexer
             this.filenameBox2.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.filenameBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.filenameBox2.Enabled = false;
-            this.filenameBox2.Location = new System.Drawing.Point(689, 71);
+            this.filenameBox2.Location = new System.Drawing.Point(686, 71);
             this.filenameBox2.Name = "filenameBox2";
             this.filenameBox2.Size = new System.Drawing.Size(72, 28);
             this.filenameBox2.TabIndex = 64;
@@ -1017,7 +1013,7 @@ namespace Image_indexer
             this.filenameBox3.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.filenameBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.filenameBox3.Enabled = false;
-            this.filenameBox3.Location = new System.Drawing.Point(689, 105);
+            this.filenameBox3.Location = new System.Drawing.Point(686, 105);
             this.filenameBox3.Name = "filenameBox3";
             this.filenameBox3.Size = new System.Drawing.Size(72, 28);
             this.filenameBox3.TabIndex = 65;
@@ -1031,7 +1027,7 @@ namespace Image_indexer
             this.filenameBox4.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.filenameBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.filenameBox4.Enabled = false;
-            this.filenameBox4.Location = new System.Drawing.Point(689, 139);
+            this.filenameBox4.Location = new System.Drawing.Point(686, 139);
             this.filenameBox4.Name = "filenameBox4";
             this.filenameBox4.Size = new System.Drawing.Size(72, 28);
             this.filenameBox4.TabIndex = 66;
@@ -1044,7 +1040,7 @@ namespace Image_indexer
             this.requiredBox8.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.requiredBox8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.requiredBox8.Enabled = false;
-            this.requiredBox8.Location = new System.Drawing.Point(612, 273);
+            this.requiredBox8.Location = new System.Drawing.Point(609, 273);
             this.requiredBox8.Name = "requiredBox8";
             this.requiredBox8.Size = new System.Drawing.Size(71, 30);
             this.requiredBox8.TabIndex = 61;
@@ -1056,12 +1052,12 @@ namespace Image_indexer
             this.indexField8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.indexField8.Location = new System.Drawing.Point(258, 273);
+            this.indexField8.Location = new System.Drawing.Point(256, 273);
             this.indexField8.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
             this.indexField8.MaxLength = 30;
             this.indexField8.Name = "indexField8";
             this.indexField8.ReadOnly = true;
-            this.indexField8.Size = new System.Drawing.Size(268, 20);
+            this.indexField8.Size = new System.Drawing.Size(267, 20);
             this.indexField8.TabIndex = 8;
             this.indexField8.WordWrap = false;
             // 
@@ -1070,12 +1066,12 @@ namespace Image_indexer
             this.fieldnameField8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.fieldnameField8.Location = new System.Drawing.Point(67, 273);
+            this.fieldnameField8.Location = new System.Drawing.Point(66, 273);
             this.fieldnameField8.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
             this.fieldnameField8.MaxLength = 30;
             this.fieldnameField8.Name = "fieldnameField8";
             this.fieldnameField8.ReadOnly = true;
-            this.fieldnameField8.Size = new System.Drawing.Size(179, 20);
+            this.fieldnameField8.Size = new System.Drawing.Size(178, 20);
             this.fieldnameField8.TabIndex = 60;
             this.fieldnameField8.TabStop = false;
             this.fieldnameField8.WordWrap = false;
@@ -1087,7 +1083,7 @@ namespace Image_indexer
             this.enableBox8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.enableBox8.Location = new System.Drawing.Point(3, 273);
             this.enableBox8.Name = "enableBox8";
-            this.enableBox8.Size = new System.Drawing.Size(55, 30);
+            this.enableBox8.Size = new System.Drawing.Size(54, 30);
             this.enableBox8.TabIndex = 70;
             this.enableBox8.TabStop = false;
             this.enableBox8.UseVisualStyleBackColor = true;
@@ -1129,7 +1125,7 @@ namespace Image_indexer
             // fileListLabel
             // 
             this.fileListLabel.AutoSize = true;
-            this.fileListLabel.Location = new System.Drawing.Point(18, 486);
+            this.fileListLabel.Location = new System.Drawing.Point(12, 494);
             this.fileListLabel.Name = "fileListLabel";
             this.fileListLabel.Size = new System.Drawing.Size(38, 13);
             this.fileListLabel.TabIndex = 7;
@@ -1146,7 +1142,7 @@ namespace Image_indexer
             // signatureLabel
             // 
             this.signatureLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.signatureLabel.Location = new System.Drawing.Point(1263, 861);
+            this.signatureLabel.Location = new System.Drawing.Point(1518, 862);
             this.signatureLabel.Name = "signatureLabel";
             this.signatureLabel.Size = new System.Drawing.Size(144, 15);
             this.signatureLabel.TabIndex = 9;
@@ -1168,7 +1164,7 @@ namespace Image_indexer
             // 
             this.fitImageButton.Location = new System.Drawing.Point(624, 464);
             this.fitImageButton.Name = "fitImageButton";
-            this.fitImageButton.Size = new System.Drawing.Size(149, 23);
+            this.fitImageButton.Size = new System.Drawing.Size(153, 23);
             this.fitImageButton.TabIndex = 14;
             this.fitImageButton.TabStop = false;
             this.fitImageButton.Text = "Fit whole image";
@@ -1234,16 +1230,16 @@ namespace Image_indexer
             this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Location = new System.Drawing.Point(782, 27);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(625, 831);
+            this.groupBox1.Size = new System.Drawing.Size(880, 832);
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
             // 
             // pdfBrowser1
             // 
-            this.pdfBrowser1.Location = new System.Drawing.Point(21, 20);
+            this.pdfBrowser1.Location = new System.Drawing.Point(7, 10);
             this.pdfBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.pdfBrowser1.Name = "pdfBrowser1";
-            this.pdfBrowser1.Size = new System.Drawing.Size(591, 799);
+            this.pdfBrowser1.Size = new System.Drawing.Size(867, 816);
             this.pdfBrowser1.TabIndex = 2;
             // 
             // fileListBox
@@ -1251,9 +1247,9 @@ namespace Image_indexer
             this.fileListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fileListBox.FormattingEnabled = true;
             this.fileListBox.ItemHeight = 15;
-            this.fileListBox.Location = new System.Drawing.Point(12, 502);
+            this.fileListBox.Location = new System.Drawing.Point(12, 510);
             this.fileListBox.Name = "fileListBox";
-            this.fileListBox.Size = new System.Drawing.Size(761, 349);
+            this.fileListBox.Size = new System.Drawing.Size(765, 349);
             this.fileListBox.TabIndex = 22;
             this.fileListBox.TabStop = false;
             this.fileListBox.UseTabStops = false;
@@ -1284,7 +1280,7 @@ namespace Image_indexer
             this.AcceptButton = this.validateButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1424, 911);
+            this.ClientSize = new System.Drawing.Size(1684, 911);
             this.Controls.Add(this.filesRenamingBox);
             this.Controls.Add(this.propertiesLockButton);
             this.Controls.Add(this.fileListBox);
@@ -1307,8 +1303,8 @@ namespace Image_indexer
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1440, 950);
-            this.MinimumSize = new System.Drawing.Size(1440, 950);
+            this.MaximumSize = new System.Drawing.Size(1700, 950);
+            this.MinimumSize = new System.Drawing.Size(1700, 950);
             this.Name = "imageIndexerMainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Image Indexer";

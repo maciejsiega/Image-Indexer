@@ -4,7 +4,7 @@
   <description asmv2:iconFile="imageIndexerIcon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="Image Indexer" version="0.7.7888.36467" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="Image Indexer" version="0.7.7889.19484" language="neutral" processorArchitecture="msil" />
     <commandLine file="Image Indexer.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Image Indexer.exe" size="3835336">
-      <assemblyIdentity name="Image Indexer" version="0.7.7888.36467" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Image Indexer.exe" size="3836360">
+      <assemblyIdentity name="Image Indexer" version="0.7.7889.19484" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>WLRBxDFm6A58uJynh158PSarUJTjv3OKy8cKod60Seo=</dsig:DigestValue>
+        <dsig:DigestValue>f2Q60d961HHyH2iPKgOlAh1A+kCuzl3N5DqXxJ9QZJE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -102,13 +102,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Image Indexer.exe.config" size="803">
+  <file name="Image Indexer.exe.config" size="795">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>+mhVJMiRAhFVASHCoY3vTeY7AFqNIV1t3SIqAwNrteY=</dsig:DigestValue>
+      <dsig:DigestValue>R7pfnWGYXWDkHu+7q078rSbXmhSafkas7UrFnWACVFg=</dsig:DigestValue>
     </hash>
   </file>
   <file name="imageIndexerIcon.ico" size="1857302">

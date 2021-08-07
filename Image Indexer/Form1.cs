@@ -35,6 +35,8 @@ namespace Image_indexer
 
         private int indexFieldsCount = 1;
 
+        private char[] FileNameIlligalCharacters = { '<', '>', ':', '\"', '/','\\','|','?','*'};
+
         public imageIndexerMainWindow()
         {
             InitializeComponent();
@@ -43,6 +45,7 @@ namespace Image_indexer
             else
                 this.versionLabel.Text = "Version: " + System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString();
             lockIncompleteFunctions();
+            currentIndex = -1;
         }
 
         private void lockIncompleteFunctions()
@@ -78,8 +81,8 @@ namespace Image_indexer
 
         private void reloadPictureBox()
         {
-            this.pictureBox1.Location = new System.Drawing.Point(12, 19);
-            this.pictureBox1.Size = new System.Drawing.Size(600, 800);
+            this.pictureBox1.Location = new System.Drawing.Point(6, 11);
+            this.pictureBox1.Size = new System.Drawing.Size(867, 815);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.Image = Properties.Resources.imageIndexer;
             this.pdfBrowser1.Visible = false;
@@ -367,20 +370,49 @@ namespace Image_indexer
         private void load_previous_document()
         {
             this.currentIndex -= 1;
-            //this.pictureBox1.Image = null;
             loadImage(this.currentIndex);
         }
 
         private void load_next_document()
         {
             this.currentIndex += 1;
-            //this.pictureBox1.Image = null;
             loadImage(this.currentIndex);
+        }
+
+        /// <summary>
+        /// This method checks if the value used for filename contains illigal characters for windows filename
+        /// </summary>
+        /// <param name="value">string value of the index field</param>
+        /// <param name="position">index field position to set focus back on that field</param>
+        /// <returns>boolean true for found, false for not found</returns>
+        private bool checkIfContainsIlligalCharacters(string value, int position,string fieldName)
+        {
+            for (int character = 0; character < this.FileNameIlligalCharacters.Length; character++)
+            {
+                if (value.Contains(this.FileNameIlligalCharacters[character]))
+                {
+                    MessageBox.Show($"Index field {position} - {fieldName} - lands in the filename\n\nIt cannot contain illigal characters such as: < > : \" / \\ | ? * ", "Validation error - illigal characters for filename");
+                    focusOn(position);
+                    return true ;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// This method displays error that field cannot be blank as it's required.
+        /// </summary>
+        /// <param name="position">To indicate which field it is related to</param>
+        private void emptyFieldErrorMessage(int position)
+        {
+            MessageBox.Show($"Index field {position} cannot be left empty as it is a required field", "Validation error");
+            focusOn(position);
+            return;
         }
 
         private void validateButton_Click(object sender, EventArgs e)
         {
-            if (this.pictureBox1.Image == null)
+            if (this.currentIndex == -1 || this.pictureBox1.Image == null)
             {
                 MessageBox.Show("No images loaded up", "Validation");
                 return;
@@ -390,74 +422,102 @@ namespace Image_indexer
                 this.indexedValuesList[this.currentIndex][0] = this.indexField1.Text;
             else
             {
-                MessageBox.Show("Index field 1 cannot be left empty as it is a required field", "Validation error");
-                focusOn(1);
+                emptyFieldErrorMessage(1);
                 return;
             }
             //Field2
             if (this.requiredBox2.Checked == true & this.indexField2.TextLength == 0)
             {
-                MessageBox.Show("Index field 2 cannot be left empty as it is a required field", "Validation error");
-                focusOn(2);
+                emptyFieldErrorMessage(2);
                 return;
             }
             else
+            {
+                if (this.filenameBox2.Checked == true)
+                    if (checkIfContainsIlligalCharacters(this.indexField2.Text, 2, this.fieldnameField2.Text) == true)
+                        return;
                 this.indexedValuesList[this.currentIndex][1] = this.indexField2.Text;
+            }
             //Field3
             if (this.requiredBox3.Checked == true & this.indexField3.TextLength == 0)
             {
-                MessageBox.Show("Index field 3 cannot be left empty as it is a required field", "Validation error");
-                focusOn(3);
+                emptyFieldErrorMessage(3);
                 return;
             }
             else
+            {
+                if (this.filenameBox3.Checked == true)
+                    if (checkIfContainsIlligalCharacters(this.indexField3.Text, 3, this.fieldnameField3.Text) == true)
+                        return;
                 this.indexedValuesList[this.currentIndex][2] = this.indexField3.Text;
+            }
             //Field4
             if (this.requiredBox4.Checked == true & this.indexField4.TextLength == 0)
             {
-                MessageBox.Show("Index field 4 cannot be left empty as it is a required field", "Validation error");
-                focusOn(4);
+                emptyFieldErrorMessage(4);
                 return;
             }
             else
+            {
+                if (this.filenameBox4.Checked == true)
+                    if (checkIfContainsIlligalCharacters(this.indexField4.Text, 4, this.fieldnameField4.Text) == true)
+                        return;
                 this.indexedValuesList[this.currentIndex][3] = this.indexField4.Text;
+            }
+                
             //Field5
             if (this.requiredBox5.Checked == true & this.indexField5.TextLength == 0)
             {
-                MessageBox.Show("Index field 5 cannot be left empty as it is a required field", "Validation error");
-                focusOn(5);
+                emptyFieldErrorMessage(5);
                 return;
             }
             else
+            {
+                if (this.filenameBox5.Checked == true)
+                    if (checkIfContainsIlligalCharacters(this.indexField5.Text, 5, this.fieldnameField5.Text) == true)
+                        return;
                 this.indexedValuesList[this.currentIndex][4] = this.indexField5.Text;
+            }
+                
             //Field6
             if (this.requiredBox6.Checked == true & this.indexField6.TextLength == 0)
             {
-                MessageBox.Show("Index field 6 cannot be left empty as it is a required field", "Validation error");
-                focusOn(6);
+                emptyFieldErrorMessage(6);
                 return;
             }
             else
+            {
+                if (this.filenameBox6.Checked == true)
+                    if (checkIfContainsIlligalCharacters(this.indexField6.Text, 6, this.fieldnameField6.Text) == true)
+                        return;
                 this.indexedValuesList[this.currentIndex][5] = this.indexField6.Text;
+            }
             //Field7
             if (this.requiredBox7.Checked == true & this.indexField7.TextLength == 0)
             {
-                MessageBox.Show("Index field 7 cannot be left empty as it is a required field", "Validation error");
-                focusOn(7);
+                emptyFieldErrorMessage(7);
                 return;
             }
             else
+            {
+                if (this.filenameBox7.Checked == true)
+                    if (checkIfContainsIlligalCharacters(this.indexField7.Text, 7, this.fieldnameField7.Text) == true)
+                        return;
                 this.indexedValuesList[this.currentIndex][6] = this.indexField7.Text;
+            }
             //Field8
             if (this.requiredBox7.Checked == true & this.indexField7.TextLength == 0)
             {
-                MessageBox.Show("Index field 8 cannot be left empty as it is a required field", "Validation error");
-                focusOn(8);
+                emptyFieldErrorMessage(8);
                 return;
             }
             else
+            {
+                if (this.filenameBox8.Checked == true)
+                    if (checkIfContainsIlligalCharacters(this.indexField8.Text, 7, this.fieldnameField8.Text) == true)
+                        return;
                 this.indexedValuesList[this.currentIndex][7] = this.indexField8.Text;
-
+            }
             //Creating a new filename
 
             this.newFileNames[this.currentIndex] = this.indexField1.Text;
@@ -513,8 +573,8 @@ namespace Image_indexer
         {
             if (this.pictureBox1.Image == null)
                 return;
-            this.pictureBox1.Location = new System.Drawing.Point(6, 19);
-            this.pictureBox1.Size = new System.Drawing.Size(600, 800);
+            this.pictureBox1.Location = new System.Drawing.Point(6, 11);
+            this.pictureBox1.Size = new System.Drawing.Size(867, 815);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
         }
 
@@ -884,6 +944,11 @@ namespace Image_indexer
                 return;
             }
 
+            if(settingsData.Count!=51)
+            {
+                MessageBox.Show("Error 0x1003 - Unable to open the settings file\n File is corrupted.", "Settings opening error");
+                return;
+            }
             settingItems loadedSettings = new settingItems(settingsData);
             applySettings(loadedSettings);
             lockProperties();
@@ -979,6 +1044,10 @@ namespace Image_indexer
 
         #endregion
     }
+
+    /// <summary>
+    /// This class contains information about settings.
+    /// </summary>
     public class settingItems 
     {
         public string Title { get; set; }
@@ -988,6 +1057,12 @@ namespace Image_indexer
 
         public settingItems(List<string> data)
         {
+            //If the list with settings contains more or less than 51 items returns error.
+            if(data.Count !=51)
+            {
+                MessageBox.Show("Settings file is corrupted", "Loading settings");
+                return;
+            }
             Fields = new string[8, 6];
             this.Title = data[0];
             this.ProjectID = data[1];

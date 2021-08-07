@@ -4,7 +4,7 @@
   <description asmv2:publisher="Maciej Siega" asmv2:product="Image Indexer" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <deployment install="true" mapFileExtensions="true" co.v1:createDesktopShortcut="true" />
   <compatibleFrameworks xmlns="urn:schemas-microsoft-com:clickonce.v2">
-    <framework targetVersion="4.7.2" profile="Full" supportedRuntime="4.0.30319" />
+    <framework targetVersion="4.8" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
     <dependentAssembly dependencyType="install" codebase="Image Indexer.exe.manifest" size="6785">
@@ -14,7 +14,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>5L2I22FT9aVkKTQa7LcwYTHWuXCrBzbC4j9tiMYWzFQ=</dsig:DigestValue>
+        <dsig:DigestValue>SkdPbUF1z6EjMhWx0s0tjeBrBffYht2O7DwgKZDWxJY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
