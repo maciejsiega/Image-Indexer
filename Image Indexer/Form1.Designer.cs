@@ -422,7 +422,7 @@ namespace Image_indexer
             | System.Windows.Forms.AnchorStyles.Right)));
             this.indexField1.Location = new System.Drawing.Point(256, 37);
             this.indexField1.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
-            this.indexField1.MaxLength = 30;
+            this.indexField1.MaxLength = 50;
             this.indexField1.Name = "indexField1";
             this.indexField1.Size = new System.Drawing.Size(267, 20);
             this.indexField1.TabIndex = 1;
@@ -786,7 +786,7 @@ namespace Image_indexer
             | System.Windows.Forms.AnchorStyles.Right)));
             this.fieldnameField1.Location = new System.Drawing.Point(66, 37);
             this.fieldnameField1.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
-            this.fieldnameField1.MaxLength = 30;
+            this.fieldnameField1.MaxLength = 20;
             this.fieldnameField1.Name = "fieldnameField1";
             this.fieldnameField1.Size = new System.Drawing.Size(178, 20);
             this.fieldnameField1.TabIndex = 45;
@@ -800,7 +800,7 @@ namespace Image_indexer
             | System.Windows.Forms.AnchorStyles.Right)));
             this.fieldnameField2.Location = new System.Drawing.Point(66, 71);
             this.fieldnameField2.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
-            this.fieldnameField2.MaxLength = 30;
+            this.fieldnameField2.MaxLength = 20;
             this.fieldnameField2.Name = "fieldnameField2";
             this.fieldnameField2.ReadOnly = true;
             this.fieldnameField2.Size = new System.Drawing.Size(178, 20);
@@ -815,7 +815,7 @@ namespace Image_indexer
             | System.Windows.Forms.AnchorStyles.Right)));
             this.indexField2.Location = new System.Drawing.Point(256, 71);
             this.indexField2.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
-            this.indexField2.MaxLength = 30;
+            this.indexField2.MaxLength = 50;
             this.indexField2.Name = "indexField2";
             this.indexField2.ReadOnly = true;
             this.indexField2.Size = new System.Drawing.Size(267, 20);
@@ -829,7 +829,7 @@ namespace Image_indexer
             | System.Windows.Forms.AnchorStyles.Right)));
             this.indexField3.Location = new System.Drawing.Point(256, 105);
             this.indexField3.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
-            this.indexField3.MaxLength = 30;
+            this.indexField3.MaxLength = 50;
             this.indexField3.Name = "indexField3";
             this.indexField3.ReadOnly = true;
             this.indexField3.Size = new System.Drawing.Size(267, 20);
@@ -843,7 +843,7 @@ namespace Image_indexer
             | System.Windows.Forms.AnchorStyles.Right)));
             this.indexField4.Location = new System.Drawing.Point(256, 139);
             this.indexField4.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
-            this.indexField4.MaxLength = 30;
+            this.indexField4.MaxLength = 50;
             this.indexField4.Name = "indexField4";
             this.indexField4.ReadOnly = true;
             this.indexField4.Size = new System.Drawing.Size(267, 20);
@@ -857,7 +857,7 @@ namespace Image_indexer
             | System.Windows.Forms.AnchorStyles.Right)));
             this.indexField5.Location = new System.Drawing.Point(256, 173);
             this.indexField5.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
-            this.indexField5.MaxLength = 30;
+            this.indexField5.MaxLength = 50;
             this.indexField5.Name = "indexField5";
             this.indexField5.ReadOnly = true;
             this.indexField5.Size = new System.Drawing.Size(267, 20);
@@ -871,7 +871,7 @@ namespace Image_indexer
             | System.Windows.Forms.AnchorStyles.Right)));
             this.indexField6.Location = new System.Drawing.Point(256, 207);
             this.indexField6.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
-            this.indexField6.MaxLength = 30;
+            this.indexField6.MaxLength = 50;
             this.indexField6.Name = "indexField6";
             this.indexField6.ReadOnly = true;
             this.indexField6.Size = new System.Drawing.Size(267, 20);
@@ -885,7 +885,7 @@ namespace Image_indexer
             | System.Windows.Forms.AnchorStyles.Right)));
             this.indexField7.Location = new System.Drawing.Point(256, 239);
             this.indexField7.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
-            this.indexField7.MaxLength = 30;
+            this.indexField7.MaxLength = 50;
             this.indexField7.Name = "indexField7";
             this.indexField7.ReadOnly = true;
             this.indexField7.Size = new System.Drawing.Size(267, 20);
@@ -899,7 +899,7 @@ namespace Image_indexer
             | System.Windows.Forms.AnchorStyles.Right)));
             this.fieldnameField3.Location = new System.Drawing.Point(66, 105);
             this.fieldnameField3.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
-            this.fieldnameField3.MaxLength = 30;
+            this.fieldnameField3.MaxLength = 20;
             this.fieldnameField3.Name = "fieldnameField3";
             this.fieldnameField3.ReadOnly = true;
             this.fieldnameField3.Size = new System.Drawing.Size(178, 20);
@@ -914,7 +914,7 @@ namespace Image_indexer
             | System.Windows.Forms.AnchorStyles.Right)));
             this.fieldnameField4.Location = new System.Drawing.Point(66, 139);
             this.fieldnameField4.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
-            this.fieldnameField4.MaxLength = 30;
+            this.fieldnameField4.MaxLength = 20;
             this.fieldnameField4.Name = "fieldnameField4";
             this.fieldnameField4.ReadOnly = true;
             this.fieldnameField4.Size = new System.Drawing.Size(178, 20);
@@ -929,7 +929,7 @@ namespace Image_indexer
             | System.Windows.Forms.AnchorStyles.Right)));
             this.fieldnameField5.Location = new System.Drawing.Point(66, 173);
             this.fieldnameField5.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
-            this.fieldnameField5.MaxLength = 30;
+            this.fieldnameField5.MaxLength = 20;
             this.fieldnameField5.Name = "fieldnameField5";
             this.fieldnameField5.ReadOnly = true;
             this.fieldnameField5.Size = new System.Drawing.Size(178, 20);
@@ -944,7 +944,7 @@ namespace Image_indexer
             | System.Windows.Forms.AnchorStyles.Right)));
             this.fieldnameField6.Location = new System.Drawing.Point(66, 207);
             this.fieldnameField6.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
-            this.fieldnameField6.MaxLength = 30;
+            this.fieldnameField6.MaxLength = 20;
             this.fieldnameField6.Name = "fieldnameField6";
             this.fieldnameField6.ReadOnly = true;
             this.fieldnameField6.Size = new System.Drawing.Size(178, 20);
@@ -959,7 +959,7 @@ namespace Image_indexer
             | System.Windows.Forms.AnchorStyles.Right)));
             this.fieldnameField7.Location = new System.Drawing.Point(66, 239);
             this.fieldnameField7.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
-            this.fieldnameField7.MaxLength = 30;
+            this.fieldnameField7.MaxLength = 20;
             this.fieldnameField7.Name = "fieldnameField7";
             this.fieldnameField7.ReadOnly = true;
             this.fieldnameField7.Size = new System.Drawing.Size(178, 20);
@@ -1054,7 +1054,7 @@ namespace Image_indexer
             | System.Windows.Forms.AnchorStyles.Right)));
             this.indexField8.Location = new System.Drawing.Point(256, 273);
             this.indexField8.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
-            this.indexField8.MaxLength = 30;
+            this.indexField8.MaxLength = 50;
             this.indexField8.Name = "indexField8";
             this.indexField8.ReadOnly = true;
             this.indexField8.Size = new System.Drawing.Size(267, 20);
@@ -1068,7 +1068,7 @@ namespace Image_indexer
             | System.Windows.Forms.AnchorStyles.Right)));
             this.fieldnameField8.Location = new System.Drawing.Point(66, 273);
             this.fieldnameField8.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
-            this.fieldnameField8.MaxLength = 30;
+            this.fieldnameField8.MaxLength = 20;
             this.fieldnameField8.Name = "fieldnameField8";
             this.fieldnameField8.ReadOnly = true;
             this.fieldnameField8.Size = new System.Drawing.Size(178, 20);
@@ -1116,8 +1116,7 @@ namespace Image_indexer
             this.validateButton.Location = new System.Drawing.Point(308, 387);
             this.validateButton.Name = "validateButton";
             this.validateButton.Size = new System.Drawing.Size(171, 42);
-            this.validateButton.TabIndex = 5;
-            this.validateButton.TabStop = false;
+            this.validateButton.TabIndex = 9;
             this.validateButton.Text = "Validate";
             this.validateButton.UseVisualStyleBackColor = true;
             this.validateButton.Click += new System.EventHandler(this.validateButton_Click);
@@ -1164,7 +1163,7 @@ namespace Image_indexer
             // 
             this.fitImageButton.Location = new System.Drawing.Point(624, 464);
             this.fitImageButton.Name = "fitImageButton";
-            this.fitImageButton.Size = new System.Drawing.Size(153, 23);
+            this.fitImageButton.Size = new System.Drawing.Size(153, 25);
             this.fitImageButton.TabIndex = 14;
             this.fitImageButton.TabStop = false;
             this.fitImageButton.Text = "Fit whole image";
@@ -1228,6 +1227,7 @@ namespace Image_indexer
             // 
             this.groupBox1.Controls.Add(this.pdfBrowser1);
             this.groupBox1.Controls.Add(this.pictureBox1);
+            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox1.Location = new System.Drawing.Point(782, 27);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(880, 832);
@@ -1236,11 +1236,12 @@ namespace Image_indexer
             // 
             // pdfBrowser1
             // 
-            this.pdfBrowser1.Location = new System.Drawing.Point(7, 10);
+            this.pdfBrowser1.Location = new System.Drawing.Point(7, 11);
             this.pdfBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.pdfBrowser1.Name = "pdfBrowser1";
             this.pdfBrowser1.Size = new System.Drawing.Size(867, 816);
             this.pdfBrowser1.TabIndex = 2;
+            this.pdfBrowser1.TabStop = false;
             // 
             // fileListBox
             // 
@@ -1272,6 +1273,7 @@ namespace Image_indexer
             this.filesRenamingBox.Name = "filesRenamingBox";
             this.filesRenamingBox.Size = new System.Drawing.Size(127, 26);
             this.filesRenamingBox.TabIndex = 24;
+            this.filesRenamingBox.TabStop = false;
             this.filesRenamingBox.Text = "Enable files renaming";
             this.filesRenamingBox.UseVisualStyleBackColor = true;
             // 

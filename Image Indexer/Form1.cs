@@ -403,9 +403,9 @@ namespace Image_indexer
         /// This method displays error that field cannot be blank as it's required.
         /// </summary>
         /// <param name="position">To indicate which field it is related to</param>
-        private void emptyFieldErrorMessage(int position)
+        private void emptyFieldErrorMessage(int position, string fieldName)
         {
-            MessageBox.Show($"Index field {position} cannot be left empty as it is a required field", "Validation error");
+            MessageBox.Show($"Index field {position} - {fieldName} - cannot be left empty as it is a required field", "Validation error - empty field");
             focusOn(position);
             return;
         }
@@ -422,13 +422,13 @@ namespace Image_indexer
                 this.indexedValuesList[this.currentIndex][0] = this.indexField1.Text;
             else
             {
-                emptyFieldErrorMessage(1);
+                emptyFieldErrorMessage(1,this.fieldnameField1.Text);
                 return;
             }
             //Field2
             if (this.requiredBox2.Checked == true & this.indexField2.TextLength == 0)
             {
-                emptyFieldErrorMessage(2);
+                emptyFieldErrorMessage(2, this.fieldnameField2.Text);
                 return;
             }
             else
@@ -441,7 +441,7 @@ namespace Image_indexer
             //Field3
             if (this.requiredBox3.Checked == true & this.indexField3.TextLength == 0)
             {
-                emptyFieldErrorMessage(3);
+                emptyFieldErrorMessage(3, this.fieldnameField3.Text);
                 return;
             }
             else
@@ -454,7 +454,7 @@ namespace Image_indexer
             //Field4
             if (this.requiredBox4.Checked == true & this.indexField4.TextLength == 0)
             {
-                emptyFieldErrorMessage(4);
+                emptyFieldErrorMessage(4, this.fieldnameField4.Text);
                 return;
             }
             else
@@ -468,7 +468,7 @@ namespace Image_indexer
             //Field5
             if (this.requiredBox5.Checked == true & this.indexField5.TextLength == 0)
             {
-                emptyFieldErrorMessage(5);
+                emptyFieldErrorMessage(5, this.fieldnameField5.Text);
                 return;
             }
             else
@@ -482,7 +482,7 @@ namespace Image_indexer
             //Field6
             if (this.requiredBox6.Checked == true & this.indexField6.TextLength == 0)
             {
-                emptyFieldErrorMessage(6);
+                emptyFieldErrorMessage(6, this.fieldnameField6.Text);
                 return;
             }
             else
@@ -495,7 +495,7 @@ namespace Image_indexer
             //Field7
             if (this.requiredBox7.Checked == true & this.indexField7.TextLength == 0)
             {
-                emptyFieldErrorMessage(7);
+                emptyFieldErrorMessage(7, this.fieldnameField7.Text);
                 return;
             }
             else
@@ -508,7 +508,7 @@ namespace Image_indexer
             //Field8
             if (this.requiredBox7.Checked == true & this.indexField7.TextLength == 0)
             {
-                emptyFieldErrorMessage(8);
+                emptyFieldErrorMessage(8, this.fieldnameField8.Text);
                 return;
             }
             else
@@ -518,47 +518,149 @@ namespace Image_indexer
                         return;
                 this.indexedValuesList[this.currentIndex][7] = this.indexField8.Text;
             }
-            //Creating a new filename
+            //Creating a new filename if file renaming is checked
+            if (this.filesRenamingBox.Checked == true)
+                if (assignFileNames() == false)
+                    return;
 
-            this.newFileNames[this.currentIndex] = this.indexField1.Text;
-            if (this.filenameBox2.Checked == true)
-                this.newFileNames[this.currentIndex] += ("-" + this.indexField2.Text);
-            if (this.filenameBox3.Checked == true)
-                this.newFileNames[this.currentIndex] += ("-" + this.indexField3.Text);
-            if (this.filenameBox4.Checked == true)
-                this.newFileNames[this.currentIndex] += ("-" + this.indexField4.Text);
-            if (this.filenameBox5.Checked == true)
-                this.newFileNames[this.currentIndex] += ("-" + this.indexField5.Text);
-            if (this.filenameBox6.Checked == true)
-                this.newFileNames[this.currentIndex] += ("-" + this.indexField6.Text);
-            if (this.filenameBox7.Checked == true)
-                this.newFileNames[this.currentIndex] += ("-" + this.indexField7.Text);
-            if (this.filenameBox8.Checked == true)
-                this.newFileNames[this.currentIndex] += ("-" + this.indexField8.Text);
 
             this.currentIndex += 1;
             loadImage(this.currentIndex, true);
+            focusOn(1);
             return;
         }
+
+        /// <summary>
+        /// This method creates a new filenames
+        /// </summary>
+        /// <returns>true for OK - false for missing data</returns>
+        private bool assignFileNames()
+        {
+            this.newFileNames[this.currentIndex] = this.indexField1.Text;
+            if (this.filenameBox2.Checked == true)
+            {
+                this.requiredBox2.Checked = true;
+                if (this.indexField2.TextLength == 0)
+                {
+                    emptyFieldErrorMessage(2, this.fieldnameField2.Text);
+                    return false;
+                }
+                this.newFileNames[this.currentIndex] += ("-" + this.indexField2.Text);
+            }
+
+            if (this.filenameBox3.Checked == true) 
+            {
+                this.requiredBox3.Checked = true;
+                if (this.indexField3.TextLength == 0)
+                {
+                    emptyFieldErrorMessage(3, this.fieldnameField3.Text);
+                    return false;
+                }
+                this.newFileNames[this.currentIndex] += ("-" + this.indexField3.Text); 
+            }
+
+            if (this.filenameBox4.Checked == true)
+            {
+                this.requiredBox4.Checked = true;
+                if (this.indexField4.TextLength == 0)
+                {
+                    emptyFieldErrorMessage(4, this.fieldnameField4.Text);
+                    return false;
+                }
+                this.newFileNames[this.currentIndex] += ("-" + this.indexField4.Text);
+            }
+
+            if (this.filenameBox5.Checked == true)
+            {
+                this.requiredBox5.Checked = true;
+                if (this.indexField5.TextLength == 0)
+                {
+                    emptyFieldErrorMessage(5, this.fieldnameField5.Text);
+                    return false;
+                }
+                this.newFileNames[this.currentIndex] += ("-" + this.indexField5.Text);
+            }
+
+            if (this.filenameBox6.Checked == true)
+            {
+                this.requiredBox6.Checked = true;
+                if (this.indexField6.TextLength == 0)
+                {
+                    emptyFieldErrorMessage(6, this.fieldnameField6.Text);
+                    return false;
+                }
+                this.newFileNames[this.currentIndex] += ("-" + this.indexField6.Text);
+            }
+              
+            if (this.filenameBox7.Checked == true)
+            {
+                this.requiredBox7.Checked = true;
+                if (this.indexField7.TextLength == 0)
+                {
+                    emptyFieldErrorMessage(7, this.fieldnameField7.Text);
+                    return false;
+                }
+                this.newFileNames[this.currentIndex] += ("-" + this.indexField7.Text);
+            }
+                    
+            if (this.filenameBox8.Checked == true)
+            {
+                this.requiredBox8.Checked = true;
+                if (this.indexField8.TextLength == 0)
+                {
+                    emptyFieldErrorMessage(8, this.fieldnameField8.Text);
+                    return false;
+                }
+                this.newFileNames[this.currentIndex] += ("-" + this.indexField8.Text);
+            }
+                   
+            return true;
+        }
+       
 
         private void focusOn(int fieldNumber)
         {
             if (fieldNumber == 1)
+            {
                 this.indexField1.Focus();
+                this.indexField1.SelectionLength = 0;
+            }
             if (fieldNumber == 2)
+            {
                 this.indexField2.Focus();
+                this.indexField2.SelectionLength = 0;
+            }
             if (fieldNumber == 3)
+            {
                 this.indexField3.Focus();
+                this.indexField3.SelectionLength = 0;
+            }
             if (fieldNumber == 4)
+            {
                 this.indexField4.Focus();
+                this.indexField4.SelectionLength = 0;
+            }
             if (fieldNumber == 5)
+            {
                 this.indexField5.Focus();
+                this.indexField5.SelectionLength = 0;
+            }
             if (fieldNumber == 6)
+            {
                 this.indexField6.Focus();
+                this.indexField6.SelectionLength = 0;
+            }
             if (fieldNumber == 7)
+            {
                 this.indexField7.Focus();
+                this.indexField7.SelectionLength = 0;
+            }
             if (fieldNumber == 8)
+            {
                 this.indexField8.Focus();
+                this.indexField8.SelectionLength = 0;
+            }
+
             return;
         }
         #endregion
