@@ -34,6 +34,8 @@ namespace Image_indexer
 
         private List<string> validList = new List<string>();
 
+        public Models.ValidationFields [] AllData { get; set; }
+
         private int indexFieldsCount = 1;
 
         private char[] FileNameIlligalCharacters = { '<', '>', ':', '\"', '/', '\\', '|', '?', '*' };
@@ -281,6 +283,7 @@ namespace Image_indexer
                     validList = new List<string>();
                     this.folder_location = fbd.SelectedPath;
 
+                    this.AllData = new Models.ValidationFields[validList.Count];
 
                     for (int i = 0; i < this.fileList.Length; i++)
                     {
@@ -616,46 +619,59 @@ namespace Image_indexer
 
         private void pictureBox1_MouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            if (this.pictureBox1.Image == null)
+            try
+            {
+                if (this.pictureBox1.Image == null)
+                {
+                    return;
+                }
+                int x = e.Location.X;
+                int y = e.Location.Y;
+                int ow = pictureBox1.Width;
+                int oh = pictureBox1.Height;
+                int VX, VY;
+                int zoomStep = 200;
+
+
+
+                if (e.Delta > 0)
+                {
+                    this.pictureBox1.Width += zoomStep;
+                    this.pictureBox1.Height += zoomStep;
+
+
+
+                    System.Reflection.PropertyInfo pInfo = pictureBox1.GetType().GetProperty("ImageRectangle", System.Reflection.BindingFlags.Instance |
+                    System.Reflection.BindingFlags.NonPublic);
+                    Rectangle rect = (Rectangle)pInfo.GetValue(pictureBox1, null);
+
+                    pictureBox1.Width = rect.Width;
+                    pictureBox1.Height = rect.Height;
+
+                }
+                if (e.Delta < 0) // shrink
+                {
+                    /*
+                    if (this.pictureBox1.Width < this.imgOriginal.Width / 2 || this.pictureBox1.Width > this.imgOriginal.Width * 2)
+                        return;
+                    */
+                    pictureBox1.Width -= zoomStep;
+                    pictureBox1.Height -= zoomStep;
+                    System.Reflection.PropertyInfo pInfo = pictureBox1.GetType().GetProperty("ImageRectangle", System.Reflection.BindingFlags.Instance |
+                     System.Reflection.BindingFlags.NonPublic);
+                    Rectangle rect = (Rectangle)pInfo.GetValue(pictureBox1, null);
+                    pictureBox1.Width = rect.Width;
+                    pictureBox1.Height = rect.Height;
+                }
+                //Step 4: calculate the displacement caused by scaling, compensate and realize the effect of anchor scaling
+                VX = (int)((double)x * (ow - pictureBox1.Width) / ow);
+                VY = (int)((double)y * (oh - pictureBox1.Height) / oh);
+                pictureBox1.Location = new Point(pictureBox1.Location.X + VX, pictureBox1.Location.Y + VY);
+            }
+            catch (Exception)
             {
                 return;
             }
-            int x = e.Location.X;
-            int y = e.Location.Y;
-            int ow = pictureBox1.Width;
-            int oh = pictureBox1.Height;
-            int VX, VY;
-            int zoomStep = 200;
-            if (e.Delta > 0)
-            {
-                this.pictureBox1.Width += zoomStep;
-                this.pictureBox1.Height += zoomStep;
-
-                System.Reflection.PropertyInfo pInfo = pictureBox1.GetType().GetProperty("ImageRectangle", System.Reflection.BindingFlags.Instance |
-                System.Reflection.BindingFlags.NonPublic);
-                Rectangle rect = (Rectangle)pInfo.GetValue(pictureBox1, null);
-
-                pictureBox1.Width = rect.Width;
-                pictureBox1.Height = rect.Height;
-            }
-            if (e.Delta < 0) // shrink
-            {
-                if (this.pictureBox1.Width < this.imgOriginal.Width / 10)
-                    return;
-
-                pictureBox1.Width -= zoomStep;
-                pictureBox1.Height -= zoomStep;
-                System.Reflection.PropertyInfo pInfo = pictureBox1.GetType().GetProperty("ImageRectangle", System.Reflection.BindingFlags.Instance |
-                 System.Reflection.BindingFlags.NonPublic);
-                Rectangle rect = (Rectangle)pInfo.GetValue(pictureBox1, null);
-                pictureBox1.Width = rect.Width;
-                pictureBox1.Height = rect.Height;
-            }
-            //Step 4: calculate the displacement caused by scaling, compensate and realize the effect of anchor scaling
-            VX = (int)((double)x * (ow - pictureBox1.Width) / ow);
-            VY = (int)((double)y * (oh - pictureBox1.Height) / oh);
-            pictureBox1.Location = new Point(pictureBox1.Location.X + VX, pictureBox1.Location.Y + VY);
-
         }
 
         #endregion
@@ -904,7 +920,7 @@ namespace Image_indexer
 
             string json = File.ReadAllText(jsonPath);
 
-            Settings settings = JsonConvert.DeserializeObject<Settings>(json);
+            Models.Settings settings = JsonConvert.DeserializeObject<Models.Settings>(json);
 
             loadSettings(settings);
 
@@ -914,7 +930,7 @@ namespace Image_indexer
         }
 
 
-        private void loadSettings(Settings settings)
+        private void loadSettings(Models.Settings settings)
         {
             if (settings.Title == null)
             {
@@ -936,7 +952,7 @@ namespace Image_indexer
 
         }
 
-        private void applySettings(KeyValuePair<string, Field> field, int position)
+        private void applySettings(KeyValuePair<string, Models.SettingsField> field, int position)
         {
             if(field.Value.Enabled == "true")
             {
@@ -976,7 +992,7 @@ namespace Image_indexer
                 return;
             }
 
-            Settings settings = new Settings();
+            Models.Settings settings = new Models.Settings();
 
             savingSettingsWindow savingWindow = new savingSettingsWindow();
             DialogResult dialogresult = savingWindow.ShowDialog();
@@ -990,7 +1006,7 @@ namespace Image_indexer
             settings.Title = basicData[0];
             settings.ProjectID = basicData[1];
             settings.FileRenaming = returnLString(filesRenamingBox);
-            settings.Fields = new Dictionary<string, Field>();
+            settings.Fields = new Dictionary<string, Models.SettingsField>();
 
             for (int i = 1; i<=8; i++)
             {
@@ -1009,7 +1025,7 @@ namespace Image_indexer
                     temp = "null";
                 else
                     temp = textbox.Text;
-                Field tempItem = new Field();
+                Models.SettingsField tempItem = new Models.SettingsField();
                 tempItem.TempAssign(returnLString(checkbox), temp, returnLString(checkbox2), returnLString(checkbox3), returnLString(checkbox4));
                 settings.Fields.Add($"Field{i}",tempItem);
             }
@@ -1024,46 +1040,7 @@ namespace Image_indexer
             
 
         }
-
-        private void displayValues(Field tempItem)
-        {
-            Console.WriteLine(tempItem.Enabled + " " + tempItem.Name + " " + tempItem.Sticky + " " + tempItem.Required + " " + tempItem.Filename);
-        }
     }
 
-    public class Field
-    {
-        public string Enabled { get; set; }
-        public string Name { get; set; }
-        public string Sticky { get; set; }
-        public string Required { get; set; }
-        public string Filename { get; set; }
-
-        public void TempAssign(string enabled, string name, string sticky, string required, string filename)
-        {
-            this.Enabled = enabled;
-            if (name.Length == 0)
-                this.Name = "null";
-            else
-                this.Name = name;
-            this.Sticky = sticky;
-            this.Required = required;
-            this.Filename = filename;
-        }
-
-        
-    }
-
-    public class Settings
-    {
-        [JsonProperty("Title")]
-        public string Title { get; set; }
-        [JsonProperty("Project id")]
-        public string ProjectID { get; set; }
-        [JsonProperty("File renaming")]
-        public string FileRenaming { get; set; }
-        [JsonProperty("Fields")]
-        public Dictionary<string, Field> Fields { get; set; }
-    }
     #endregion
 }
