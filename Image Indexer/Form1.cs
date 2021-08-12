@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.IO;
 using Newtonsoft.Json;
+using TextBox = System.Windows.Forms.TextBox;
 
 namespace Image_indexer
 {
@@ -21,7 +22,6 @@ namespace Image_indexer
     /// </summary>
     public partial class imageIndexerMainWindow : Form
     {
-        private string binPath { get; set; }
         private string jsonPath { get; set; }
         private Image imgOriginal { get; set; }
         private string folder_location { get; set; }
@@ -53,7 +53,6 @@ namespace Image_indexer
         {
             this.rotateClockwiseToolStripMenuItem.Enabled = false;
             this.rotateCounterwiseToolStripMenuItem.Enabled = false;
-            this.saveConfigFileToolStripMenuItem.Enabled = false;
             this.helpToolStripMenuItem.Enabled = false;
             this.aboutToolStripMenuItem.Enabled = false;
             this.nextPageToolStripMenuItem1.Enabled = false;
@@ -538,130 +537,36 @@ namespace Image_indexer
         private bool assignFileNames()
         {
             this.newFileNames[this.currentIndex] = this.indexField1.Text;
-            if (this.filenameBox2.Checked == true)
+            for (int i=2;i<=8;i++)
             {
-                this.requiredBox2.Checked = true;
-                if (this.indexField2.TextLength == 0)
+                CheckBox filename = this.Controls.Find($"fieldnameBox{i}", true).FirstOrDefault() as CheckBox;
+                TextBox indexbox = this.Controls.Find($"indexField{i}", true).FirstOrDefault() as TextBox;
+                TextBox fieldname = this.Controls.Find($"fieldnameField{i}", true).FirstOrDefault() as TextBox;
+                CheckBox require = this.Controls.Find($"requiredBox{i}", true).FirstOrDefault() as CheckBox;
+                if(filename.Checked == true)
                 {
-                    emptyFieldErrorMessage(2, this.fieldnameField2.Text);
-                    return false;
+                    require.Checked = true;
+                    if(indexbox.TextLength ==0)
+                    {
+                        emptyFieldErrorMessage(i, fieldname.Text);
+                        return false;
+                    }
+                    this.newFileNames[this.currentIndex] += "-" + indexbox.Text;
                 }
-                this.newFileNames[this.currentIndex] += ("-" + this.indexField2.Text);
             }
-
-            if (this.filenameBox3.Checked == true)
-            {
-                this.requiredBox3.Checked = true;
-                if (this.indexField3.TextLength == 0)
-                {
-                    emptyFieldErrorMessage(3, this.fieldnameField3.Text);
-                    return false;
-                }
-                this.newFileNames[this.currentIndex] += ("-" + this.indexField3.Text);
-            }
-
-            if (this.filenameBox4.Checked == true)
-            {
-                this.requiredBox4.Checked = true;
-                if (this.indexField4.TextLength == 0)
-                {
-                    emptyFieldErrorMessage(4, this.fieldnameField4.Text);
-                    return false;
-                }
-                this.newFileNames[this.currentIndex] += ("-" + this.indexField4.Text);
-            }
-
-            if (this.filenameBox5.Checked == true)
-            {
-                this.requiredBox5.Checked = true;
-                if (this.indexField5.TextLength == 0)
-                {
-                    emptyFieldErrorMessage(5, this.fieldnameField5.Text);
-                    return false;
-                }
-                this.newFileNames[this.currentIndex] += ("-" + this.indexField5.Text);
-            }
-
-            if (this.filenameBox6.Checked == true)
-            {
-                this.requiredBox6.Checked = true;
-                if (this.indexField6.TextLength == 0)
-                {
-                    emptyFieldErrorMessage(6, this.fieldnameField6.Text);
-                    return false;
-                }
-                this.newFileNames[this.currentIndex] += ("-" + this.indexField6.Text);
-            }
-
-            if (this.filenameBox7.Checked == true)
-            {
-                this.requiredBox7.Checked = true;
-                if (this.indexField7.TextLength == 0)
-                {
-                    emptyFieldErrorMessage(7, this.fieldnameField7.Text);
-                    return false;
-                }
-                this.newFileNames[this.currentIndex] += ("-" + this.indexField7.Text);
-            }
-
-            if (this.filenameBox8.Checked == true)
-            {
-                this.requiredBox8.Checked = true;
-                if (this.indexField8.TextLength == 0)
-                {
-                    emptyFieldErrorMessage(8, this.fieldnameField8.Text);
-                    return false;
-                }
-                this.newFileNames[this.currentIndex] += ("-" + this.indexField8.Text);
-            }
-
             return true;
         }
 
 
+        /// <summary>
+        /// This method set focus on selected field and change the selection lenght (as a default it highlights whole text) to 0
+        /// </summary>
+        /// <param name="fieldNumber"></param>
         private void focusOn(int fieldNumber)
         {
-            if (fieldNumber == 1)
-            {
-                this.indexField1.Focus();
-                this.indexField1.SelectionLength = 0;
-            }
-            if (fieldNumber == 2)
-            {
-                this.indexField2.Focus();
-                this.indexField2.SelectionLength = 0;
-            }
-            if (fieldNumber == 3)
-            {
-                this.indexField3.Focus();
-                this.indexField3.SelectionLength = 0;
-            }
-            if (fieldNumber == 4)
-            {
-                this.indexField4.Focus();
-                this.indexField4.SelectionLength = 0;
-            }
-            if (fieldNumber == 5)
-            {
-                this.indexField5.Focus();
-                this.indexField5.SelectionLength = 0;
-            }
-            if (fieldNumber == 6)
-            {
-                this.indexField6.Focus();
-                this.indexField6.SelectionLength = 0;
-            }
-            if (fieldNumber == 7)
-            {
-                this.indexField7.Focus();
-                this.indexField7.SelectionLength = 0;
-            }
-            if (fieldNumber == 8)
-            {
-                this.indexField8.Focus();
-                this.indexField8.SelectionLength = 0;
-            }
-
+            TextBox textbox = this.Controls.Find($"indexField{fieldNumber}", true).FirstOrDefault() as TextBox;
+            textbox.Focus();
+            textbox.SelectionLength = 0;
             return;
         }
         #endregion
@@ -961,46 +866,17 @@ namespace Image_indexer
 
         private void lockProperties()
         {
-            this.requiredBox1.Enabled = false;
-            this.stickyBox1.Enabled = false;
-            this.filenameBox1.Enabled = false;
-            this.fieldnameField1.ReadOnly = true;
-
-            this.requiredBox2.Enabled = false;
-            this.stickyBox2.Enabled = false;
-            this.filenameBox2.Enabled = false;
-            this.fieldnameField2.ReadOnly = true;
-
-            this.requiredBox3.Enabled = false;
-            this.stickyBox3.Enabled = false;
-            this.filenameBox3.Enabled = false;
-            this.fieldnameField3.ReadOnly = true;
-
-            this.requiredBox4.Enabled = false;
-            this.stickyBox4.Enabled = false;
-            this.filenameBox4.Enabled = false;
-            this.fieldnameField4.ReadOnly = true;
-
-            this.requiredBox5.Enabled = false;
-            this.stickyBox5.Enabled = false;
-            this.filenameBox5.Enabled = false;
-            this.fieldnameField5.ReadOnly = true;
-
-            this.requiredBox6.Enabled = false;
-            this.stickyBox6.Enabled = false;
-            this.filenameBox6.Enabled = false;
-            this.fieldnameField6.ReadOnly = true;
-
-            this.requiredBox7.Enabled = false;
-            this.stickyBox7.Enabled = false;
-            this.filenameBox7.Enabled = false;
-            this.fieldnameField7.ReadOnly = true;
-
-            this.requiredBox8.Enabled = false;
-            this.stickyBox8.Enabled = false;
-            this.filenameBox8.Enabled = false;
-            this.fieldnameField8.ReadOnly = true;
-
+            for(int position=1; position < 8; position++)
+            {
+                CheckBox checkbox = this.Controls.Find($"requiredBox{position}", true).FirstOrDefault() as CheckBox;
+                checkbox.Enabled = false;
+                CheckBox checkbox2 = this.Controls.Find($"stickyBox{position}", true).FirstOrDefault() as CheckBox;
+                checkbox2.Enabled = false;
+                CheckBox checkbox3 = this.Controls.Find($"filenameBox{position}", true).FirstOrDefault() as CheckBox;
+                checkbox3.Enabled = false;
+                TextBox textbox = this.Controls.Find($"fieldnameField{position}", true).FirstOrDefault() as TextBox;
+                textbox.ReadOnly = true;
+            }
             focusOn(1);
         }
 
@@ -1028,19 +904,16 @@ namespace Image_indexer
 
             string json = File.ReadAllText(jsonPath);
 
-            //json = "{"+ json+ "}";
-            MessageBox.Show(this.jsonPath);
-            MessageBox.Show(json);
             Settings settings = JsonConvert.DeserializeObject<Settings>(json);
 
             loadSettings(settings);
 
             lockProperties();
 
-           
+
         }
 
-        
+
         private void loadSettings(Settings settings)
         {
             if (settings.Title == null)
@@ -1053,135 +926,144 @@ namespace Image_indexer
             else
                 this.filesRenamingBox.Checked = false;
             int i = 1;
-            
+
             foreach (var field in settings.Fields)
             {
-                 applySettings(field, i);
+                applySettings(field, i);
                 i++;
             }
             refreshSettings();
-            
+
         }
 
-        
         private void applySettings(KeyValuePair<string, Field> field, int position)
         {
-            switch (position)
+            if(field.Value.Enabled == "true")
             {
-                case 1:
-                    if (field.Value.Enabled == "true")
-                    { 
-                        this.enableBox1.Checked = true;
-                        this.fieldnameField1.Text = field.Value.Name;
-                        this.stickyBox1.Checked = Convert.ToBoolean(field.Value.Sticky);
-                        this.requiredBox1.Checked = Convert.ToBoolean(field.Value.Required);
-                        this.filenameBox1.Checked = Convert.ToBoolean(field.Value.Filename);
-                    }
-                    return;
-                case 2:
-                    if (field.Value.Enabled == "true")
-                    {
-                        this.enableBox2.Checked = true;
-                        this.fieldnameField2.Text = field.Value.Name;
-                        this.stickyBox2.Checked = Convert.ToBoolean(field.Value.Sticky);
-                        this.requiredBox2.Checked = Convert.ToBoolean(field.Value.Required);
-                        this.filenameBox2.Checked = Convert.ToBoolean(field.Value.Filename);
-                    }
-                    return;
-                case 3:
-                    if (field.Value.Enabled == "true")
-                    {
-                        this.enableBox3.Checked = true;
-                        this.fieldnameField3.Text = field.Value.Name;
-                        this.stickyBox3.Checked = Convert.ToBoolean(field.Value.Sticky);
-                        this.requiredBox3.Checked = Convert.ToBoolean(field.Value.Required);
-                        this.filenameBox3.Checked = Convert.ToBoolean(field.Value.Filename);
-                    }
-                    return;
-                case 4:
-                    if (field.Value.Enabled == "true")
-                    {
-                        this.enableBox4.Checked = true;
-                        this.fieldnameField4.Text = field.Value.Name;
-                        this.stickyBox4.Checked = Convert.ToBoolean(field.Value.Sticky);
-                        this.requiredBox4.Checked = Convert.ToBoolean(field.Value.Required);
-                        this.filenameBox4.Checked = Convert.ToBoolean(field.Value.Filename);
-                    }
-                    return;
-                case 5:
-                    if (field.Value.Enabled == "true")
-                    {
-                        this.enableBox5.Checked = true;
-                        this.fieldnameField5.Text = field.Value.Name;
-                        this.stickyBox5.Checked = Convert.ToBoolean(field.Value.Sticky);
-                        this.requiredBox5.Checked = Convert.ToBoolean(field.Value.Required);
-                        this.filenameBox5.Checked = Convert.ToBoolean(field.Value.Filename);
-                    }
-                    return;
-                case 6:
-                    if (field.Value.Enabled == "true")
-                    {
-                        this.enableBox6.Checked = true;
-                        this.fieldnameField6.Text = field.Value.Name;
-                        this.stickyBox6.Checked = Convert.ToBoolean(field.Value.Sticky);
-                        this.requiredBox6.Checked = Convert.ToBoolean(field.Value.Required);
-                        this.filenameBox6.Checked = Convert.ToBoolean(field.Value.Filename);
-                    }
-                    return;
-                case 7:
-                    if (field.Value.Enabled == "true")
-                    {
-                        this.enableBox7.Checked = true;
-                        this.fieldnameField7.Text = field.Value.Name;
-                        this.stickyBox7.Checked = Convert.ToBoolean(field.Value.Sticky);
-                        this.requiredBox7.Checked = Convert.ToBoolean(field.Value.Required);
-                        this.filenameBox7.Checked = Convert.ToBoolean(field.Value.Filename);
-                    }
-                    return;
-                case 8:
-                    if (field.Value.Enabled == "true")
-                    {
-                        this.enableBox8.Checked = true;
-                        this.fieldnameField8.Text = field.Value.Name;
-                        this.stickyBox8.Checked = Convert.ToBoolean(field.Value.Sticky);
-                        this.requiredBox8.Checked = Convert.ToBoolean(field.Value.Required);
-                        this.filenameBox8.Checked = Convert.ToBoolean(field.Value.Filename);
-                    }
-                    return;
-                default:
-                    return;
-            }
-        }
-        
-        public class Field
-        {
-            public string Enabled { get; set; }
-            public string Name { get; set; }
-            public string Sticky { get; set; }
-            public string Required { get; set; }
-            public string Filename { get; set; }
-
-            public void tempAssign(string enabled, string name, string sticky, string required, string filename)
-            {
-                this.Enabled = enabled;
-                this.Name = name;
-                this.Sticky = sticky;
-                this.Required = required;
-                this.Filename = filename;
+                CheckBox checkbox = this.Controls.Find("enableBox" + position.ToString(), true).FirstOrDefault() as CheckBox;
+                checkbox.Checked = Convert.ToBoolean(field.Value.Enabled);
+                TextBox textbox = this.Controls.Find("fieldnameField" + position.ToString(), true).FirstOrDefault() as TextBox;
+                textbox.Text = field.Value.Name;
+                CheckBox checkbox2 = this.Controls.Find("stickyBox" + position.ToString(), true).FirstOrDefault() as CheckBox;
+                checkbox2.Checked = Convert.ToBoolean(field.Value.Sticky);
+                CheckBox checkbox3 = this.Controls.Find("requiredBox" + position.ToString(), true).FirstOrDefault() as CheckBox;
+                checkbox3.Checked = Convert.ToBoolean(field.Value.Required);
+                CheckBox checkbox4 = this.Controls.Find("filenameBox" + position.ToString(), true).FirstOrDefault() as CheckBox;
+                checkbox4.Checked = Convert.ToBoolean(field.Value.Filename);
             }
         }
 
-        public class Settings
+        private string returnLString(CheckBox value)
         {
-            [JsonProperty("Title")]
-            public string Title { get; set; }
-            [JsonProperty("Project id")]
-            public string ProjectID { get; set; }
-            [JsonProperty("File renaming")]
-            public string FileRenaming { get; set; }
-            [JsonProperty("Fields")]
-            public Dictionary<string, Field> Fields { get; set; }
+            return value.Checked.ToString().ToLower(); 
         }
-        #endregion
+
+
+        private void saveConfigFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog folderDlg = new FolderBrowserDialog();
+            folderDlg.ShowNewFolderButton = true;
+
+            DialogResult result = folderDlg.ShowDialog();
+            string savePath;
+            if (result == DialogResult.OK)
+            {
+                savePath = folderDlg.SelectedPath+"\\";
+            }
+            else
+            {
+                MessageBox.Show("Incorrect or no folder chosen - please try again", "Saving config file error");
+                return;
+            }
+
+            Settings settings = new Settings();
+
+            savingSettingsWindow savingWindow = new savingSettingsWindow();
+            DialogResult dialogresult = savingWindow.ShowDialog();
+            List<string> basicData = savingWindow.getBasicData();
+            if(basicData.Count==0)
+            {
+                MessageBox.Show("No correct data given - please try again", "Saving config file error");
+                return;
+            }
+
+            settings.Title = basicData[0];
+            settings.ProjectID = basicData[1];
+            settings.FileRenaming = returnLString(filesRenamingBox);
+            settings.Fields = new Dictionary<string, Field>();
+
+            for (int i = 1; i<=8; i++)
+            {
+                CheckBox checkbox = this.Controls.Find("enableBox" + i.ToString(), true).FirstOrDefault() as CheckBox;
+
+                TextBox textbox = this.Controls.Find("fieldnameField" + i.ToString(), true).FirstOrDefault() as TextBox;
+                
+                CheckBox checkbox2 = this.Controls.Find("stickyBox" + i.ToString(), true).FirstOrDefault() as CheckBox;
+
+                CheckBox checkbox3 = this.Controls.Find("requiredBox" + i.ToString(), true).FirstOrDefault() as CheckBox;
+
+                CheckBox checkbox4 = this.Controls.Find("filenameBox" + i.ToString(), true).FirstOrDefault() as CheckBox;
+
+                string temp;
+                if (textbox.TextLength == 0)
+                    temp = "null";
+                else
+                    temp = textbox.Text;
+                Field tempItem = new Field();
+                tempItem.TempAssign(returnLString(checkbox), temp, returnLString(checkbox2), returnLString(checkbox3), returnLString(checkbox4));
+                settings.Fields.Add($"Field{i}",tempItem);
+            }
+            /*
+            foreach (var key in settings.Fields)
+            {
+                Console.WriteLine(key.Key);
+                Console.WriteLine(key.Value.Enabled + " " + key.Value.Name + " " + key.Value.Sticky + " " + key.Value.Required + " " + key.Value.Filename);
+            }*/
+
+            File.WriteAllText(savePath + settings.Title + " " + settings.ProjectID + ".json", JsonConvert.SerializeObject(settings));
+            
+
+        }
+
+        private void displayValues(Field tempItem)
+        {
+            Console.WriteLine(tempItem.Enabled + " " + tempItem.Name + " " + tempItem.Sticky + " " + tempItem.Required + " " + tempItem.Filename);
+        }
     }
+
+    public class Field
+    {
+        public string Enabled { get; set; }
+        public string Name { get; set; }
+        public string Sticky { get; set; }
+        public string Required { get; set; }
+        public string Filename { get; set; }
+
+        public void TempAssign(string enabled, string name, string sticky, string required, string filename)
+        {
+            this.Enabled = enabled;
+            if (name.Length == 0)
+                this.Name = "null";
+            else
+                this.Name = name;
+            this.Sticky = sticky;
+            this.Required = required;
+            this.Filename = filename;
+        }
+
+        
+    }
+
+    public class Settings
+    {
+        [JsonProperty("Title")]
+        public string Title { get; set; }
+        [JsonProperty("Project id")]
+        public string ProjectID { get; set; }
+        [JsonProperty("File renaming")]
+        public string FileRenaming { get; set; }
+        [JsonProperty("Fields")]
+        public Dictionary<string, Field> Fields { get; set; }
+    }
+    #endregion
 }

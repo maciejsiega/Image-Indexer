@@ -184,6 +184,7 @@ namespace Image_indexer
             this.saveConfigFileToolStripMenuItem.Name = "saveConfigFileToolStripMenuItem";
             this.saveConfigFileToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.saveConfigFileToolStripMenuItem.Text = "Save config file";
+            this.saveConfigFileToolStripMenuItem.Click += new System.EventHandler(this.saveConfigFileToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 

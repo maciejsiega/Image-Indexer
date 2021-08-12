@@ -22,3 +22,4 @@ C:\Users\Maciej\source\repos\Image-Indexer\Image Indexer\bin\Debug\System.Runtim
 C:\Users\Maciej\source\repos\Image-Indexer\Image Indexer\obj\Debug\Image Indexer.csproj.CopyComplete
 C:\Users\Maciej\source\repos\Image-Indexer\Image Indexer\obj\Debug\Image_indexer.imageIndexerMainWindow.resources
 C:\Users\Maciej\source\repos\Image-Indexer\Image Indexer\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Maciej\source\repos\Image-Indexer\Image Indexer\obj\Debug\Image_indexer.savingSettingsWindow.resources
