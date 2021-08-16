@@ -4,7 +4,7 @@
   <description asmv2:iconFile="imageIndexerIcon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="Image Indexer" version="0.7.7894.33920" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="Image Indexer" version="0.7.7895.31623" language="neutral" processorArchitecture="msil" />
     <commandLine file="Image Indexer.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -44,13 +44,13 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Image Indexer.exe" size="5697992">
-      <assemblyIdentity name="Image Indexer" version="0.7.7894.33920" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="Image Indexer" version="0.7.7895.31623" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>qo0vOKi/ggjpTatcs2HITEHw44uWKLiF4oPrkzHFVS4=</dsig:DigestValue>
+        <dsig:DigestValue>GDJL8+q2iB8LW+9ogErSVzuUVF3vu0TsCZHtOMxvBWw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
